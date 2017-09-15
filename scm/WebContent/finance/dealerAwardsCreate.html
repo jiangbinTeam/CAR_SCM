@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link href="../images/skin.css" rel="stylesheet" type="text/css" />
+<link href="../images/fox.css" rel="stylesheet" type="text/css" />
+<link href="../js/jquery-ui.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/myjs.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.js"></script>
+
+
+<script type="text/javascript" language="JavaScript">
+$(function(){  //文档加载 
+$(".tbody tr").hover( 
+  function(){ 
+    $(this).addClass("hover");    //鼠标经过添加hover样式 
+  }, 
+  function(){ 
+    $(this).removeClass("hover");   //鼠标离开移除hover样式 
+  }
+
+); 
+}); 
+
+$(function(){
+
+	$('input[name=mydate]').makeDate();
+	//$('input[name=mydate]').datepicker({duration:"fast",altFormat:"yy-mm-dd",dateFormat:"yy-mm-dd"});
+	
+});
+
+</script> 
+<style type="text/css"> 
+.hover{background-color:#CACACA;}  /*这里是鼠标经过时的颜色*/ 
+
+</style>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #EEF2FB;
+}
+-->
+</style>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="17" valign="top" background="../images/mail_leftbg.gif"><img src="../images/left-top-right.gif" width="17" height="29" /></td>
+    <td valign="top" background="../images/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="31"><div class="titlebt">财务管理</div></td>
+      </tr>
+    </table></td>
+    <td width="16" valign="top" background="../images/mail_rightbg.gif"><img src="../images/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td valign="middle" background="../images/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9">
+			<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<tr>
+		<td width="20">
+		<img src="../images/icon-login-seaver.gif" width="16" height="16" />
+		</td>
+		<td>
+		当前位置：财务管理>>经销商奖励>>经销商奖励维护(dealerAwardsCreate.html)</td>
+
+	</tr>
+	</table>
+	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+	<tbody class="tbody2">
+			<tr>
+		<td width="5%" align="left"><span>经销商</span></td>
+		<td width="12%" align="left"><select name="select" class="sec2" style="width:200px">
+            <option selected="selected" >请选择</option>
+            <option>西安4S店(孙文博)</option>
+            <option>西安4S店(孙文博)</option>
+            <option>西安4S店(孙文博)</option>
+            <option>西安4S店(孙文博)</option>
+            <option>西安4S店(孙文博)</option>
+            <option>西安4S店(孙文博)</option>
+          </select></td>
+				<td width="5%" align="left"><span>奖励原因</span></td>
+	            <td width="12%" align="left"><input name="text"  type="text" class="text_2000" style="width:200px" value=""/></td>
+		</tr>
+					<tr>
+		<td width="5%" align="left"><span>奖励金额</span></td>
+		<td width="12%" align="left"><input  type="text" style="width:200px" value="" class="text_2000"/></td>
+		<td width="5%" align="left"><span>奖励日期</span></td>
+		        <td width="12%" align="left"><input name="mydate" type="text" style="width:200px" value="" class="text_2000"/></td>
+					</tr>
+		
+		<tr>
+		  <td align="left">&nbsp;</td>
+		  <td align="left">&nbsp;</td>
+		  <td width="5%" align="left"></td>
+                        <td width="12%" align="center"><input type="submit" class="Submit" value="保  存" onclick="javascript:history.back()" style="width:100px"/></td>
+		</tr>
+		</tbody>
+	</table>
+	 <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+     
+        <tr>
+          <td width="7%"><span>年份</span></td>
+		  <td width="15%"><select name="projectname" class="sec2" style="width:100px">
+            <option value="0" selected="selected">请选择</option>
+            <option value="2009">2009</option>
+            <option value="2010">2010</option>
+          </select></td>
+		  <td width="7%"><span>汽车车型 </span></td>
+		  <td width="25%"><select name="select2" class="sec2">
+              <option value="0" selected="selected">请选择</option>
+              <option value="2009">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+              <option value="2010">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+              <option value="2011">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+              <option value="2012">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+              <option value="2013">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+              <option value="2014">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+              <option value="2015">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+              <option value="2016">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+              <option value="2017">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+              <option value="2018">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+              <option value="2019">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+              <option value="2020">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+            </select></td>
+		  <td width="46%"><input name="submit" type="submit" class="Submit" style="width:100px" value="查  询"/></td>
+        </tr>
+     
+	  </table>
+	        <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+			      <thead class="thead">
+        <tr>
+           <th width="12%" height="29">月份</th>
+                  <th width="11%">计划销售数量</th>
+                  <th width="11%">实际销售数量</th>
+                  <th width="17%">完成百分比</th>
+        </tr>
+      </thead>
+	          <tbody class="tbody">
+                <tr>
+                  <td>1月</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td>2月</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td>3月</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td>4月</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td>5月</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td>6月</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td>7月</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td>8月</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td>9月</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td height="27">10月</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td height="28">11月</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <td>12月</td>
+                  <td>100</td>
+                  <td>100</td>
+                  <td>100%</td>
+                </tr>
+              </tbody>
+            </table>
+	</td>
+    <td background="../images/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="bottom" background="../images/mail_leftbg.gif"><img src="../images/buttom_left2.gif" width="17" height="17" /></td>
+    <td background="../images/buttom_bgs.gif"><img src="../images/buttom_bgs.gif" width="17" height="17"></td>
+    <td valign="bottom" background="../images/mail_rightbg.gif"><img src="../images/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+页面要求：<br />
+1.根据经销商的销售信息来决定奖励金额，销售指的是，车辆VIN表里面是销售状态的信息。
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link href="../images/skin.css" rel="stylesheet" type="text/css" />
+<link href="../images/fox.css" rel="stylesheet" type="text/css" />
+<link href="../js/jquery-ui.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/myjs.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.js"></script>
+<script type="text/javascript" language="JavaScript">
+$(function(){  //文档加载 
+$(".tbody tr").hover( 
+  function(){ 
+    $(this).addClass("hover");    //鼠标经过添加hover样式 
+  }, 
+  function(){ 
+    $(this).removeClass("hover");   //鼠标离开移除hover样式 
+  }
+
+); 
+}); 
+
+
+$(function(){	
+				$('#dialog').dialog({
+					autoOpen: false,
+					width: 500,
+					height:350,
+					buttons: {
+						"取消": function() { 
+							$(this).dialog("close"); 
+						}, 
+						"确定": function() { 
+							$(this).dialog("close"); 
+						} 
+					}
+				});
+							$("a[name='addVin']").click(function(){
+					 
+					$('#dialog').dialog('open');
+					return false;
+				});
+				});
+</script> 
+<style type="text/css"> 
+.hover{background-color:#CACACA;}  /*这里是鼠标经过时的颜色*/ 
+
+</style>
+
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #EEF2FB;
+}
+-->
+</style>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="17" valign="top" background="../images/mail_leftbg.gif"><img src="../images/left-top-right.gif" width="17" height="29" /></td>
+    <td valign="top" background="../images/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="31"><div class="titlebt">采购管理</div></td>
+      </tr>
+    </table></td>
+    <td width="16" valign="top" background="../images/mail_rightbg.gif"><img src="../images/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td valign="middle" background="../images/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9">
+			<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<tr>
+		<td width="20">
+		<img src="../images/icon-login-seaver.gif" width="16" height="16" />		</td>
+		<td>
+		当前位置：销售管理>>发车台帐管理(createStartAccounting.html)
+		</td>
+	</tr>
+	</table>
+	        <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+              <tbody class="tbody2">
+                <tr>
+                  <td width="5%" align="left"><span >经销商订单号</span></td>
+                  <td width="12%" align="left"><span >8051</span></td>
+                  <td width="4%" align="left"><span>经销商店面地址</span></td>
+                  <td width="12%" align="left"><span>西安咸宁路200号</span></td>
+                </tr>
+                <tr>
+                  <td width="5%" align="left"><span>经销商名称</span></td>
+                  <td width="12%" align="left"><span>孙文博</span> </td>
+                  <td width="4%" align="left"><span>下单时间</span></td>
+                  <td width="12%" align="left"><span>2009-10-11</span></td>
+                </tr>
+                <tr>
+                  <td width="4%" align="left"><span>收货地址</span></td>
+                  <td width="12%" align="left"><span>西安长乐坡</span></td>
+				  <td width="4%" align="left">&nbsp;</td>
+                  <td width="12%" align="center"><input type="button" class="Submit" value="返回" style="width:100px" onclick="javascript:history.back()"/></td>
+                </tr>
+              </tbody>
+            </table>
+	        <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+              <thead class="thead">
+                <tr>
+                  <th width="6%">序号</th>
+                  <th width="26%">汽车车型</th>
+                  <th width="9%">车型颜色</th>
+                  <th width="47%">加装说明</th>
+				  <th width="12%">操作</th>
+                </tr>
+              </thead>
+              <tbody class="tbody">
+                <tr>
+                  <td>1</td>
+                  <td>大切诺基BJ2021V8(4.7 自动 四驱)</td>
+                  <td>红</td>
+                  <td>无</td>
+				  <td><a href="#" style="color:#000099" name="addVin">生成发车台帐</a></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>大切诺基BJ2021V8(4.7 自动 四驱)</td>
+                  <td>红</td>
+                  <td>需要换皮座位</td>
+				  <td><a href="#" style="color:#000099" name="addVin">生成发车台帐</a></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>大切诺基BJ2021V8(4.7 自动 四驱)</td>
+                  <td>红</td>
+                  <td>天窗需要加天窗</td>
+				  <td><a href="#" style="color:#000099" name="addVin">生成发车台帐</a></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>大切诺基BJ2021V8(4.7 自动 四驱)</td>
+                  <td>蓝</td>
+                  <td>天窗需要加天窗</td>
+				  <td><a href="#" style="color:#000099" name="addVin">生成发车台帐</a></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>大切诺基BJ2021V8(4.7 自动 四驱)</td>
+                  <td>红</td>
+                  <td>需要换皮座位</td>
+				  <td><a href="#" style="color:#000099" name="addVin">生成发车台帐</a></td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>大切诺基BJ2021V8(4.7 自动 四驱)</td>
+                  <td>红</td>
+                  <td>需要换皮座位</td>
+				  <td><a href="#" name="addVin" id="addVin" style="color:#000099">生成发车台帐</a></td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>大切诺基BJ2021V8(4.7 自动 四驱)</td>
+                  <td>红</td>
+                  <td>需要换皮座位</td>
+				  <td><a href="#" name="addVin" id="addVin" style="color:#000099">生成发车台帐</a></td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>大切诺基BJ2021V8(4.7 自动 四驱)</td>
+                  <td>红</td>
+                  <td>需要换皮座位</td>
+				  <td><a href="#" name="addVin" id="addVin" style="color:#000099">生成发车台帐</a></td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>大切诺基BJ2021V8(4.7 自动 四驱)</td>
+                  <td>红</td>
+                  <td>需要换皮座位</td>
+				  <td><a href="#" name="addVin" id="addVin" style="color:#000099">生成发车台帐</a></td>
+                </tr>
+				<tr>
+				  <td>10</td>
+                  <td>大切诺基BJ2021V8(4.7 自动 四驱)</td>
+                  <td>红</td>
+                  <td>需要换皮座位</td>
+				  <td><a href="#" name="addVin" id="addVin" style="color:#000099">生成发车台帐</a></td>
+                </tr>
+              </tbody>
+            </table>
+			<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<tr>
+			<td width="869">&nbsp;</td>
+		  <td width="63" align="right"><a href="#"><span class="left_ts">首页</span></a></td>
+		  <td width="63" align="right"><a href="#"><span class="left_ts">上一页</span></a></td>
+		  <td width="63" align="center"><span class="admin_toptxt">1/1</span></td>
+		  <td width="66" align="left"><a href="#"><span class="left_ts">下一页</span></a></td>
+		  <td width="63" align="left"><a href="#"><span class="left_ts">尾页</span></a></td>
+		</tr>
+	</table>
+	</td>
+    <td background="../images/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="bottom" background="../images/mail_leftbg.gif"><img src="../images/buttom_left2.gif" width="17" height="17" /></td>
+    <td background="../images/buttom_bgs.gif"><img src="../images/buttom_bgs.gif" width="17" height="17"></td>
+    <td valign="bottom" background="../images/mail_rightbg.gif"><img src="../images/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+<div id="dialog" title="修改发车台帐">
+		<table>
+		    <tr>
+				<td width="178"><a class="message"><strong>发车台帐编号</strong></a></td>
+				<td width="546"><input name="text" type="text" class="login_text" style="width:240px"/></td>
+		    </tr>
+			<tr>
+				<td width="178"><a class="message"><strong>销售价格</strong></a></td>
+				<td width="546"><input type="text" class="login_text" style="width:240px"/></td>
+			</tr>
+			<tr>
+				<td width="178"><a class="message"><strong>请选择VIN号</strong></a></td>
+				<td width="546"><select name="select" class="sec2" style="width:250px">
+		  <option value="0" selected="selected">请选择</option>
+          <option value="1J4GA59128L544704">1J4GA59128L544704</option>
+          <option value="1J4GA59128L544704">1J4GA59128L544704</option>
+          <option value="1J4GA59128L544704">1J4GA59128L544704</option>
+          <option value="1J4GA59128L544704">1J4GA59128L544704</option>
+          <option value="1J4GA59128L544704">1J4GA59128L544704</option>
+          <option value="1J4GA59128L544704">1J4GA59128L544704</option>
+          <option value="1J4GA59128L544704">1J4GA59128L544704</option>
+          <option value="1J4GA59128L544704">1J4GA59128L544704</option>
+          <option value="1J4GA59128L544704">1J4GA59128L544704</option>
+          <option value="1J4GA59128L544704">1J4GA59128L544704</option>
+          <option value="1J4GA59128L544704">1J4GA59128L544704</option>
+          <option value="1J4GA59128L544704">1J4GA59128L544704</option>
+        </select></td>
+			</tr>
+						<tr>
+				<td width="178"><a class="message"><strong>是否加装</strong></a></td>
+				<td width="546"><input type="radio" checked="checked"/><strong>不需要</strong> <input type="radio" /><strong>需要</strong>
+        </select></td>
+			</tr>
+		<tr>
+				<td width="178"><a class="message"><strong>加装说明</strong></a></td>
+				<td width="546"><input name="text2" type="text" class="login_text" style="width:240px"/></td>
+			</tr>
+		</table>
+</div>
+页面要求：<br />
+1.因为在数据库“汽车采购单表”中仅有采购总额和采购数量，所以单价需要手动算出。<br />
+2.如果该采购单已经上报物流部门，并形成提单，那么该采购单不允许修改，在修改列显示为空。<br />
+3.分页每页显示15条数据。按照日期排序。<br />
+4.挑选VIN号是选择的是在库的并且手续齐全可以销售还要满足当前汽车需求的汽车VIN号,如果VIN号不选择那么将不能够生成发车台帐。<br />
+5.默认情况下加装是不需要的，一点点击需要，那么汽车加装需求将记录在加装说明中，并且，这个字段保存在VIN号表里面。
+</body>
+</html>

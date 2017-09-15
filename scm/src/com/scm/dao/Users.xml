@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mybatis 映射文件 -->
+<!-- sql 语句不区分大小写 -->
+<!-- select 节点：查询操作 -->
+
+<mapper namespace="com.scm.dao.UsersMapper">
+	<resultMap type="com.scm.pojo.Users" id="Users-result">
+		<id property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="enabled" column="enabled" />
+	</resultMap>
+</mapper>
+

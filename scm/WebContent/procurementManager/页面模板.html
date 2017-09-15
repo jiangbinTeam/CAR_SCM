@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link href="../images/skin.css" rel="stylesheet" type="text/css" />
+<link href="../images/fox.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" language="JavaScript">
+$(function(){  //文档加载 
+$(".tbody tr").hover( 
+  function(){ 
+    $(this).addClass("hover");    //鼠标经过添加hover样式 
+  }, 
+  function(){ 
+    $(this).removeClass("hover");   //鼠标离开移除hover样式 
+  }
+
+); 
+}); 
+</script> 
+<style type="text/css"> 
+.hover{background-color:#CACACA;}  /*这里是鼠标经过时的颜色*/ 
+
+</style>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #EEF2FB;
+}
+-->
+</style>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="17" valign="top" background="../images/mail_leftbg.gif"><img src="../images/left-top-right.gif" width="17" height="29" /></td>
+    <td valign="top" background="../images/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="31"><div class="titlebt">采购管理</div></td>
+      </tr>
+    </table></td>
+    <td width="16" valign="top" background="../images/mail_rightbg.gif"><img src="../images/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td valign="middle" background="../images/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9">
+			<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<tr>
+		<td width="20">
+		<img src="../images/icon-login-seaver.gif" width="16" height="16" />
+		</td>
+		<td>
+		当前位置：采购管理>>车辆VIN号管理
+		</td>
+
+	</tr>
+	</table>
+	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<tr>
+		<td width="31%" align="left">&nbsp;</td>
+		<td width="41%" align="center"><input name="button" type="button" class="Submit" style="width:100px" value="创建采购单"/></td>
+		<td width="28%">&nbsp;</td>
+		</tr>
+	</table>
+	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+      <thead class="thead">
+        <tr>
+          <th>序号</th>
+          <th>采购单号</th>
+          <th>创建日期</th>
+          <th>汽车品牌</th>
+          <th>车辆编码</th>
+          <th>采购单价（万）</th>
+          <th>采购数量</th>
+          <th>采购总额</th>
+          <th>预计打款日期</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+        <tr>
+          <td>1</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.0</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td>
+		  <a href="#" style="color:#000099">修改</a></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td><a href="#" style="color:#000099">修改</a></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td><a href="#" style="color:#000099">修改</a></td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td><a href="#" style="color:#000099">修改</a></td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td><a href="#" style="color:#000099">修改</a></td>
+        </tr>
+ 		<tr>
+          <td>13</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td><a href="#" style="color:#000099">修改</a></td>
+        </tr>	
+		 <tr>
+          <td>14</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td><a href="#" style="color:#000099">修改</a></td>
+        </tr>	
+		 <tr>
+          <td>15</td>
+          <td><a href="#">8025</a></td>
+          <td>2009-10-13</td>
+          <td>大切诺基</td>
+          <td>BJ2021V8</td>
+          <td>30.1</td>
+          <td><a style="color:#CC0000">80</a></td>
+          <td><a style="color:#33CC00">2400.0</a></td>
+          <td>2009-10-13</td>
+          <td><a href="#" style="color:#000099">修改</a></td>
+        </tr>
+      </tbody>
+    </table>
+	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<tr>
+			<td width="869">&nbsp;</td>
+		  <td width="63" align="right"><a href="#"><span class="left_ts">首页</span></a></td>
+		  <td width="63" align="right"><a href="#"><span class="left_ts">上一页</span></a></td>
+		  <td width="63" align="center"><span class="admin_toptxt">1/15</span></td>
+		  <td width="66" align="left"><a href="#"><span class="left_ts">下一页</span></a></td>
+		  <td width="63" align="left"><a href="#"><span class="left_ts">尾页</span></a></td>
+		</tr>
+	</table>
+	</td>
+    <td background="../images/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="bottom" background="../images/mail_leftbg.gif"><img src="../images/buttom_left2.gif" width="17" height="17" /></td>
+    <td background="../images/buttom_bgs.gif"><img src="../images/buttom_bgs.gif" width="17" height="17"></td>
+    <td valign="bottom" background="../images/mail_rightbg.gif"><img src="../images/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+页面要求：<br />
+1.因为在数据库“汽车采购单表”中仅有采购总额和采购数量，所以单价需要手动算出<br />
+2.如果该采购单已经上报物流部门，并形成提单，那么该采购单不允许修改，在修改列显示为空。<br />
+3.分页每页显示15条数据。按照日期排序。
+</body>
+</html>

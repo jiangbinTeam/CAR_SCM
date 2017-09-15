@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link href="../images/skin.css" rel="stylesheet" type="text/css" />
+<link href="../images/fox.css" rel="stylesheet" type="text/css" />
+<link href="../js/jquery-ui.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/myjs.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.js"></script>
+
+
+<script type="text/javascript" language="JavaScript">
+$(function(){  //文档加载 
+$(".tbody tr").hover( 
+  function(){ 
+    $(this).addClass("hover");    //鼠标经过添加hover样式 
+  }, 
+  function(){ 
+    $(this).removeClass("hover");   //鼠标离开移除hover样式 
+  }
+
+); 
+}); 
+
+</script> 
+<style type="text/css"> 
+.hover{background-color:#CACACA;}  /*这里是鼠标经过时的颜色*/ 
+
+</style>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #EEF2FB;
+}
+-->
+</style>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="17" valign="top" background="../images/mail_leftbg.gif"><img src="../images/left-top-right.gif" width="17" height="29" /></td>
+    <td valign="top" background="../images/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="31"><div class="titlebt">物流管理</div></td>
+      </tr>
+    </table></td>
+    <td width="16" valign="top" background="../images/mail_rightbg.gif"><img src="../images/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td valign="middle" background="../images/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9">
+			<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<tr>
+		<td width="20">
+		<img src="../images/icon-login-seaver.gif" width="16" height="16" />
+		</td>
+		<td>
+		当前位置：物流管理>>提单管理>>提单维护(waybillCreate.html)</td>
+
+	</tr>
+	</table>
+	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+	<tbody class="tbody2">
+			<tr>
+		<td width="5%" align="left"><span>提单号</span></td>
+		<td width="12%" align="left"><input name="mydate2" type="text" style="width:200px" value="" class="text_2000"/></td>
+				<td width="5%" align="left"><span>批次号</span></td>
+		        <td width="12%" align="left"><select name="select">
+                  <option value="0" selected="selected">请选择</option>
+                  <option value="2009">AF431234(20辆)</option>
+                  <option value="2010">AF431234(20辆)</option>
+                  <option value="2011">AF431234(20辆)</option>
+                  <option value="2012">AF431234(20辆)</option>
+                  <option value="2009">AF431234(20辆)</option>
+                  <option value="2010">AF431234(20辆)</option>
+                  <option value="2011">AF431234(20辆)</option>
+                  <option value="2012">AF431234(20辆)</option>
+                  <option value="2018">AF431234(20辆)</option>
+                  <option value="2019">AF431234(20辆)</option>
+                  <option value="2020">AF431234(20辆)</option>
+                </select></td>
+		</tr>
+					<tr>
+		<td width="5%" height="27" align="left"><span>汽车车型</span></td>
+		<td width="12%" align="left"><select name="select2">
+          <option value="0" selected="selected">请选择</option>
+          <option value="2009">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2010">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2011">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2012">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2013">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2014">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2015">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2016">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2017">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2018">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2019">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2020">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+        </select></td>
+				<td width="5%" align="left">&nbsp;</td>
+		        <td width="12%" align="left"><input name="button" type="button" class="Submit" style="width:100px" value="保存" onclick="window.location='waybill.html'"/></td>
+					</tr>
+		</tbody>
+	</table>
+	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<thead class="thead">
+    	<tr>
+		<th width="4%">序号</th>
+		<th width="18%">请选择</th>
+		<th width="14%">VIN号</th>
+		<th width="16%">VIN后六位</th>	
+		<th width="15%">外饰颜色</th>	
+		</tr>
+		</thead>
+		<tbody class="tbody">
+		 <tr>
+		<td height="29">1</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		 </tr>
+		 <tr>
+		<td>2</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		 </tr>
+		 <tr>
+		<td>3</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		 </tr>
+		 <tr>
+		<td>4</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>蓝</td>
+		 </tr>
+		 <tr>
+		<td>5</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		 </tr>
+		 <tr>
+		<td>6</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		 </tr>
+		<tr>
+		<td>7</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		</tr>
+		 <tr>
+		<td>8</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		 </tr>	
+		 <tr>
+		<td>9</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		 </tr>
+		 <tr>
+		<td height="27">10</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		 </tr>	
+		 <tr>
+		<td>11</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		 </tr>	
+		 <tr>
+		<td>12</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		 </tr>
+				 <tr>
+		<td>13</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		  </tr>
+				 <tr>
+		<td>14</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		  </tr>
+				 <tr>
+		<td>15</td>
+		<td><input type="checkbox"/></td>
+		<td>1J4GA59128L544704</td>
+		<td>544704</td>
+		<td>红</td>
+		</tr>
+		</tbody>						
+    </table>
+	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<tr>
+			<td width="869">&nbsp;</td>
+		  <td width="63" align="right"><a href="#"><span class="left_ts">首页</span></a></td>
+		  <td width="63" align="right"><a href="#"><span class="left_ts">上一页</span></a></td>
+		  <td width="63" align="center"><span class="admin_toptxt">1/15</span></td>
+		  <td width="66" align="left"><a href="#"><span class="left_ts">下一页</span></a></td>
+		  <td width="63" align="left"><a href="#"><span class="left_ts">尾页</span></a></td>
+		</tr>
+	</table>
+	</td>
+    <td background="../images/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="bottom" background="../images/mail_leftbg.gif"><img src="../images/buttom_left2.gif" width="17" height="17" /></td>
+    <td background="../images/buttom_bgs.gif"><img src="../images/buttom_bgs.gif" width="17" height="17"></td>
+    <td valign="bottom" background="../images/mail_rightbg.gif"><img src="../images/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+页面要求：<br />
+1.这里显示的VIN号是还未安排提单的VIN号，如果安排了提单那么将不在此显示。<br />
+2.当选择具体的车型后，将刷新列表一个提单只能是一个车型。对于同一车型，划沟后点击分页要保存记录知道刷新列表或者点击保存后。<br />
+3.点击修改到达此页面那么此页面只显示的已经被选的VIN号。
+</body>
+</html>

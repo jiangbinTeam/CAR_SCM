@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link href="../images/skin.css" rel="stylesheet" type="text/css" />
+<link href="../images/fox.css" rel="stylesheet" type="text/css" />
+<link href="../js/jquery-ui.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/myjs.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.js"></script>
+<script type="text/javascript" language="JavaScript">
+$(function(){  //文档加载 
+$(".tbody tr").hover( 
+  function(){ 
+    $(this).addClass("hover");    //鼠标经过添加hover样式 
+  }, 
+  function(){ 
+    $(this).removeClass("hover");   //鼠标离开移除hover样式 
+  }
+
+); 
+}); 
+
+
+$(function(){
+
+	$('input[name=mydate]').makeDate();
+	//$('input[name=mydate]').datepicker({duration:"fast",altFormat:"yy-mm-dd",dateFormat:"yy-mm-dd"});
+	
+});
+
+$(function(){	
+				$('#dialog').dialog({
+					autoOpen: false,
+					width: 500,
+					height:200,
+					buttons: {
+						"取消": function() { 
+							$(this).dialog("close"); 
+						}, 
+						"确定": function() { 
+							$(this).dialog("close"); 
+						} 
+					}
+				});
+							$("a[name='createCheckBox']").click(function(){
+					 
+					$('#dialog').dialog('open');
+					return false;
+				});
+				}); 
+
+
+$(function(){	
+				$('#dialogResult').dialog({
+					autoOpen: false,
+					width: 550,
+					height:300,
+					buttons: {
+						"取消": function() { 
+							$(this).dialog("close"); 
+						}, 
+						"确定": function() { 
+							$(this).dialog("close"); 
+						} 
+					}
+				});
+							$("a[name='createCheckBoxResult']").click(function(){
+					 
+					$('#dialogResult').dialog('open');
+					return false;
+				});
+				}); 
+</script> 
+<style type="text/css"> 
+.hover{background-color:#CACACA;}  /*这里是鼠标经过时的颜色*/ 
+
+</style>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #EEF2FB;
+}
+-->
+</style>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="17" valign="top" background="../images/mail_leftbg.gif"><img src="../images/left-top-right.gif" width="17" height="29" /></td>
+    <td valign="top" background="../images/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="31"><div class="titlebt">接车管理</div></td>
+      </tr>
+    </table></td>
+    <td width="16" valign="top" background="../images/mail_rightbg.gif"><img src="../images/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td valign="middle" background="../images/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9">
+			<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<tr>
+		<td width="20">
+		<img src="../images/icon-login-seaver.gif" width="16" height="16" />
+		</td>
+		<td>
+		当前位置：接车管理>>开箱报检(checkBox.html)
+		</td>
+
+	</tr>
+	</table>
+	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<tr>
+		
+		<td width="8%" align="center" height="30"><span class="left_bt2">请选择批次</span></td>
+		<td width="21%"><input  type="text" style="width:200px" class="text_2000" value="自动补全做批次，省市互动做提单"/></td>
+		<td width="7%" align="left"><span class="left_bt2">请选择提单</span></td>
+		<td width="24%">
+		<select name="select" class="sec2" style="width:250px">
+		  <option value="0" selected="selected">请选择</option>
+          <option value="2009">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2010">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2011">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2012">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2013">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2014">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2015">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2016">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2017">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2018">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2019">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+          <option value="2020">大切诺基BJ2021V8(4.7 自动 四驱)</option>
+        </select>		</td>
+		  
+		  <td width="40%"><input name="button" type="button" class="Submit" style="width:100px" value="查看"/></td>
+	</tr>
+	</table>
+	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<thead class="thead">
+    	<tr>
+		<th>序号</th>
+		<th>vin号</th>
+		<th>汽车车型</th>
+		<th>颜色</th>	
+		<th>开箱检查单号</th>	
+		<th>开箱检查日期</th>	
+		<th>结果</th>	
+		<th>操作</th>
+		</tr>
+		</thead>
+		<tbody class="tbody">
+		 <tr>
+		<td>1</td>
+		<td>1J4GA59128L544704</td>
+		<td>大切诺基(BJ2021V8)</td>
+		<td>红</td>
+		<td>&nbsp;</td>	
+		<td>&nbsp;</td>	
+		<td>&nbsp;</td>	
+		<td>
+		<a href="#" style="color:#000099" name="createCheckBox">开箱检查</a>		
+		<a href="checkBoxSelect.html" style="color:#000099">查看</a></td>
+		</tr>
+		 <tr>
+		<td>2</td>
+		<td>1J4GA59128L544704</td>
+		<td>大切诺基(BJ2021V8)</td>
+		<td>红</td>
+		<td>2009-11-01</td>
+		<td>2009-11-01</td>
+		<td>&nbsp;</td>
+		<td>
+		<a href="#" style="color:#000099" name="createCheckBoxResult">开箱检结果</a>		
+		<a href="checkBoxSelect.html" style="color:#000099">查看</a>		</td>
+		</tr>
+		 <tr>
+		<td>3</td>
+		<td>1J4GA59128L544704</td>
+		<td>大切诺基(BJ2021V8)</td>
+		<td>红</td>
+		<td>2009-11-01</td>	
+		<td>2009-11-01</td>	
+		<td>合格</td>
+		<td><a href="checkBoxSelect.html" style="color:#000099">查看</a></td>
+		</tr>
+		 <tr>
+		<td>4</td>
+		<td>1J4GA59128L544704</td>
+		<td>大切诺基(BJ2021V8)</td>
+		<td>红</td>
+		<td>&nbsp;</td>	
+		<td>&nbsp;</td>	
+		<td>&nbsp;</td>
+		<td>
+		<a href="#" style="color:#000099" name="createCheckBox">开箱检查单</a>
+		<a href="checkBoxSelect.html" style="color:#000099">查看</a>		</td>
+	    </tr>
+		 <tr>
+		<td>5</td>
+		<td>1J4GA59128L544704</td>
+		<td>大切诺基(BJ2021V8)</td>
+		<td>红</td>
+		<td>2009-11-01</td>	
+		<td>2009-11-01</td>	
+		<td>&nbsp;</td>
+		<td> 
+		<a href="#" style="color:#000099" name="createCheckBoxResult">开箱检结果</a>	
+		<a href="checkBoxSelect.html" style="color:#000099">查看</a>		</td>
+	    </tr>
+		 <tr>
+		<td>6</td>
+		<td>1J4GA59128L544704</td>
+		<td>大切诺基(BJ2021V8)</td>
+		<td>红</td>
+		<td>2009-11-01</td>	
+		<td>2009-11-01</td>	
+		<td>合格</td>
+		<td><a href="checkBoxSelect.html" style="color:#000099">查看</a></td>
+	    </tr>
+		<tr>
+		<td>7</td>
+		<td>1J4GA59128L544704</td>
+		<td>大切诺基(BJ2021V8)</td>
+		<td>红</td>
+		<td>2009-11-01</td>
+		<td>2009-11-01</td>
+		<td>合格</td>
+		<td>
+		<a href="checkBoxSelect.html" style="color:#000099">查看</a></td>
+		</tr>
+		 <tr>
+		<td>8</td>
+		<td>1J4GA59128L544704</td>
+		<td>大切诺基(BJ2021V8)</td>
+		<td>红</td>
+		<td>2009-11-01</td>
+		<td>2009-11-01</td>
+		<td>合格</td>
+		<td><a href="checkBoxSelect.html" style="color:#000099">查看</a></td>
+	    </tr>	
+		 <tr>
+		<td>9</td>
+		<td>1J4GA59128L544704</td>
+		<td>大切诺基(BJ2021V8)</td>
+		<td>红</td>
+		<td>2009-11-01</td>
+		<td>2009-11-01</td>
+		<td>合格</td>
+		<td><a href="checkBoxSelect.html" style="color:#000099">查看</a></td>
+	    </tr>
+		 <tr>
+		<td>10</td>
+		<td>1J4GA59128L544704</td>
+		<td>大切诺基(BJ2021V8)</td>
+		<td>红</td>
+		<td>2009-11-01</td>
+		<td>2009-11-01</td>
+		<td>合格</td>
+		<td><a href="checkBoxSelect.html" style="color:#000099">查看</a></td>
+	    </tr>	
+		 <tr>
+		<td height="28">11</td>
+		<td>1J4GA59128L544704</td>
+		<td>大切诺基(BJ2021V8)</td>
+		<td>红</td>
+		<td>2009-11-01</td>
+		<td>2009-11-01</td>
+		<td>合格</td>
+		<td><a href="checkBoxSelect.html" style="color:#000099">查看</a></td>
+	    </tr>	
+		 <tr>
+		<td>12</td>
+		<td>1J4GA59128L544704</td>
+		<td>大切诺基(BJ2021V8)</td>
+		<td>红</td>
+		<td>2009-11-01</td>
+		<td>2009-11-01</td>
+		<td>合格</td>
+		<td><a href="checkBoxSelect.html" style="color:#000099">查看</a></td>
+	    </tr>
+		</tbody>						
+    </table>
+	</td>
+    <td background="../images/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="bottom" background="../images/mail_leftbg.gif"><img src="../images/buttom_left2.gif" width="17" height="17" /></td>
+    <td background="../images/buttom_bgs.gif"><img src="../images/buttom_bgs.gif" width="17" height="17"></td>
+    <td valign="bottom" background="../images/mail_rightbg.gif"><img src="../images/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+				<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<tr>
+			<td width="869">&nbsp;</td>
+		  <td width="63" align="right"><a href="#"><span class="left_ts">首页</span></a></td>
+		  <td width="63" align="right"><a href="#"><span class="left_ts">上一页</span></a></td>
+		  <td width="63" align="center"><span class="admin_toptxt">1/15</span></td>
+		  <td width="66" align="left"><a href="#"><span class="left_ts">下一页</span></a></td>
+		  <td width="63" align="left"><a href="#"><span class="left_ts">尾页</span></a></td>
+		</tr>
+	</table>
+<div id="dialog" title="创建开箱检查单">
+		<table>
+		    <tr>
+				<td width="178"><a><strong>vin号</strong></a></td>
+				<td width="546"><span class="left_txt">1J4GA59128L544704</span></td>
+		    </tr>
+					    <tr>
+				<td width="178"><a><strong>开箱检查日期</strong></a></td>
+				<td width="546"><input type="text" style="width:200px"  class="text_2000" name="mydate"/>
+				  </td>
+			</tr>
+					    
+		</table>
+</div>
+<div id="dialogResult" title="开箱检查结果">
+		<table>
+		    <tr>
+				<td width="206"><a class="message"><strong>开箱检查结果</strong></a></td>
+				<td width="518"><input type="radio"/><span class="left_txt">合格</span><span class="left_txt"><input type="radio"/>不合格</span></td>
+			</tr>
+					 <tr>
+				<td width="206"><a class="message"><strong>发动机号</strong></a></td>
+				<td width="518"><input type="text" style="width:200px"  class="text_2000" name="mydate222"/></td>
+			</tr>
+			<tr>
+			<td width="206"><a><strong>原产国</strong></a></td>
+			  <td width="518"><input type="text" style="width:200px"  class="text_2000" name="mydate2"/></td>
+			</tr>
+			<td width="206"><a><strong>损坏情况</strong></a></td>
+			  <td width="518"><textarea name="textarea" class="text_2000" style="height:100px;width:300px"></textarea></td>
+			</tr>
+		</table>
+</div>
+页面要求：<br />
+1.根据批次和提单查询出所有报关已经通过的车辆<br />
+2.当创建完开箱检查单以后进而才能创建开箱检查结果。<br/>
+</body>
+</html>
