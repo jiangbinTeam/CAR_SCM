@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- mybatis 全年采购计划 映射文件 -->
+<!-- 命名空间对应映射器接口 -->
+<mapper namespace="com.scm.dao.YearProcurementMapper">
+  	<!--映射结果集-->
+  	<resultMap type="com.scm.pojo.YearProcurementPlan" id="YearProcurementPlan-result">
+		<id property="yearProcurementPlanId" column="yearProcurementPlanId"/>
+  		<result property="yearProcurementPlanYear" column="yearProcurementPlanYear"/>
+  		<result property="yearProcurementPlanCount" column="yearProcurementPlanCount"/>
+  		<result property="ifDecomposition" column="ifDecomposition"/>
+  		
+  		<!-- N:1 多对一映射 -->
+  		<association property="typeDictionary" javaType="com.scm.pojo.TypeDictionary">
+  			<id property="typeCode" column="typeCode"/>
+  			<result property="brand" column="brand"/>
+  			<result property="carCharacter" column="carCharacter"/>
+  		</association>
+	</resultMap>
+	
+	<!-- 查询全年采购计划 -->
+	<select id="findAll"  resultMap="YearProcurementPlan-result">
+		select yearProcurementPlanId,yearProcurementPlanYear,yearProcurementPlanCount,ifDecomposition,y.typecode,brand,carCharacter from scm_yearProcurementPlan y
+		left join scm_typeDictionary d on y.typecode=d.typecode
+	</select>
+	
+	<!-- 按id查全年采购计划 -->
+	<select id="findById"  resultMap="YearProcurementPlan-result">
+		select yearProcurementPlanId,yearProcurementPlanYear,yearProcurementPlanCount,ifDecomposition,y.typecode,brand,carCharacter from scm_yearProcurementPlan y
+		left join scm_typeDictionary d on y.typecode=d.typecode where yearProcurementPlanId=#{yearProcurementPlanId}
+	</select>
+</mapper>
