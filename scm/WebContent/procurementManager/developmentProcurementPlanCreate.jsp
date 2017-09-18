@@ -1,19 +1,14 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>采购管理</title>
     
 	<link href="${pageContext.request.contextPath}/resources/images/skin.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/resources/images/fox.css" rel="stylesheet" type="text/css" />
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script type="text/javascript" language="JavaScript">
@@ -89,6 +84,7 @@ body {
 		</tr>
 		</thead>
 		<tbody class="tbody">
+	<form action="colorChangeEdit" method="post">
 		 <tr>
 		<td >1</td>
 		<td>2009</td>
@@ -97,51 +93,6 @@ body {
 		<td>4.7 自动 四驱</td>
 		<td><a style="color:#CC0000">80</a></td>		
 		<td><input type="text" class="editbox4" value="0"/></td>	
-		</tr>
-		 <tr>
-		<td>2</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><input type="text" class="editbox4" value="0"/></td>	
-		</tr>
-		 <tr>
-		<td>3</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><input type="text" class="editbox4" value="0"/></td>
-		</tr>
-		 <tr>
-		<td>4</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><input type="text" class="editbox4" value="0"/></td>
-		</tr>
-		 <tr>
-		<td>5</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><input type="text" class="editbox4" value="0"/></td>
-		</tr>
-		 <tr>
-		<td>6</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><input type="text" class="editbox4" value="0"/></td>
 		</tr>
     </table>
 	</td>
