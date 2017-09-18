@@ -1,38 +1,30 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<base href="<%=basePath%>">
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>采购管理</title>
-
 <link href="${pageContext.request.contextPath}/resources/images/skin.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/resources/images/fox.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script type="text/javascript" language="JavaScript">
-	$(function() { //文档加载 
-		$(".tbody tr").hover(
-			function() {
-				$(this).addClass("hover"); //鼠标经过添加hover样式 
-			},
-			function() {
-				$(this).removeClass("hover"); //鼠标离开移除hover样式 
-			}
-		);
-	});
-</script>
-<style type="text/css">
-.hover {
-	background-color: #CACACA;
-} /*这里是鼠标经过时的颜色*/
+$(function(){  //文档加载 
+$(".tbody tr").hover( 
+  function(){ 
+    $(this).addClass("hover");    //鼠标经过添加hover样式 
+  }, 
+  function(){ 
+    $(this).removeClass("hover");   //鼠标离开移除hover样式 
+  }
+
+); 
+}); 
+</script> 
+<style type="text/css"> 
+.hover{background-color:#CACACA;}  /*这里是鼠标经过时的颜色*/ 
 </style>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <style type="text/css">
 <!--
 body {
@@ -44,19 +36,21 @@ body {
 }
 -->
 </style>
-
 </head>
 
 <body>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td width="17" valign="top" background="${pageContext.request.contextPath}/resources/images/mail_leftbg.gif"><img src="${pageContext.request.contextPath}/resources/images/left-top-right.gif" width="17" height="29" /></td>
-    <td valign="top" background="${pageContext.request.contextPath}/resources/images/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+    <td valign="top" background="${pageContext.request.contextPath}/resources/images/content-bg.gif">
+    <table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
       <tr>
         <td height="31"><div class="titlebt">采购管理</div></td>
       </tr>
     </table></td>
-    <td width="16" valign="top" background="/mail_rightbg.gif"><img src="${pageContext.request.contextPath}/resources/images/nav-right-bg.gif" width="16" height="29" /></td>
+    <td width="16" valign="top" background="/mail_rightbg.gif">
+    	<img src="${pageContext.request.contextPath}/resources/images/nav-right-bg.gif" width="16" height="29" />
+    </td>
   </tr>
   <tr>
     <td valign="middle" background="${pageContext.request.contextPath}/resources/images/mail_leftbg.gif">&nbsp;</td>
@@ -95,83 +89,19 @@ body {
 		</tr>
 		</thead>
 		<tbody class="tbody">
-		 <tr>
-		<td >1</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td>
-		<a href="#" style="color:#000099">修改</a>
-		<a href="decompositionProcurementPlanCreate.html" style="color:#000099">分解计划</a>
-		</td>
-		</tr>
-		 <tr>
-		<td>2</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td>
-		<a href="#" style="color:#000099">修改</a>
-		<a href="decompositionProcurementPlanCreate.html" style="color:#000099">分解计划</a>
-		</td>
-		</tr>
-		 <tr>
-		<td>3</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td>100</td>
-		<td><a style="color:#CC0000">80</a></td>
-		<td>
-		<a href="#" style="color:#000099">修改</a>
-		<a href="decompositionProcurementPlanCreate.html" style="color:#000099">分解计划</a>
-		</td>	
-		</tr>
-		 <tr>
-		<td>4</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td>100</td>
-		<td><a style="color:#CC0000">80</a></td>
-		<td><a href="#" style="color:#000099">修改</a>
-		<a href="decompositionProcurementPlanCreate.html" style="color:#000099">分解计划</a>
-		</td>	
-		</tr>
-		 <tr>
-		<td>5</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td>100</td>
-		<td><a style="color:#CC0000">80</a></td>
-		<td><a href="#" style="color:#000099">修改</a>
-		<a href="decompositionProcurementPlanCreate.html" style="color:#000099">分解计划</a>
-		</td>	
-		</tr>
-		 <tr>
-		<td>6</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td>100</td>
-		<td><a style="color:#CC0000">80</a></td>
-		<td>
-		<a href="#" style="color:#000099">修改</a>
-		<a href="decompositionProcurementPlanSelect.html" style="color:#000099">查看</a>
-		</td>	
-		</tr>
-		<tbody>		
+				<c:forEach items="${ypp}" var="yearProcurementPlan" varStatus="i">
+					 <tr>
+						<td>${i.index+1}</td>
+						<td>${yearProcurementPlan.yearProcurementPlanYear}</td>
+						<td>${yearProcurementPlan.typeDictionary.brand}</td>
+						<td>${yearProcurementPlan.typeDictionary.typeCode}</td>
+						<td>${yearProcurementPlan.typeDictionary.carCharacter}</td>
+						<td>${yearProcurementPlan.yearProcurementPlanCount}</td>
+						<td>${yearProcurementPlan.yearProcurementPlanCount}</td>
+						<%-- <td><a href="colorChangeCreate?colorCode=${colorChange.colorCode}" style="color:#000099">修改</a></td> --%>
+					 </tr>
+				</c:forEach>
+			</tbody>	
     </table>
 				<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<tr>

@@ -13,8 +13,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
 	<link href="${pageContext.request.contextPath}/resources/images/skin.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/resources/images/fox.css" rel="stylesheet" type="text/css" />
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+
 <script type="text/javascript" language="JavaScript">
 $(function(){  //文档加载 
 $(".tbody tr").hover( 

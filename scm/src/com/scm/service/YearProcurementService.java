@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,8 +23,27 @@ public class YearProcurementService {
 	@Resource(name="yearProcurementMapper")
 	private YearProcurementMapper yearProcurementMapper;
 	
+	
+	//创建全年采购计划
+	@Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.DEFAULT,rollbackFor=Exception.class)
+	public int add(YearProcurementPlan yearProcurementPlan){
+		return yearProcurementMapper.add(yearProcurementPlan);
+	}
+	
+	//修改全年采购计划
+	@Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.DEFAULT,rollbackFor=Exception.class)
+	public int update(YearProcurementPlan yearProcurementPlan){
+		return yearProcurementMapper.update(yearProcurementPlan);
+		
+	}
+	
 	//列出全年采购计划
 	public List<YearProcurementPlan> findAll(){
 		return yearProcurementMapper.findAll();
+	}
+	
+	//通过id查找全年采购计划
+	public YearProcurementPlan findById(Integer yearProcurementPlanId){
+		return yearProcurementMapper.findById(yearProcurementPlanId);
 	}
 }
