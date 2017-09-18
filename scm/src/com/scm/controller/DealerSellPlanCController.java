@@ -65,20 +65,19 @@ public class DealerSellPlanCController {
 			@RequestParam(value = "carType", required = false) String carType,
 			@RequestParam(value = "dealerID", required = false) Integer dealerID) {
 
-		System.out.println(currPage + "-" + year + "-" + mouth + "-" + carType + "-" + dealerID);
 		if (year.equals("0") || year.equals("")) {
 			year = null;
 		}
 		if (mouth.equals("0") || mouth.equals("")) {
 			mouth = null;
 		}
-		if (carType.equals("0") || carType.equals("")) {
+		if (carType.equals("0") || carType.equals("")||carType==null) {
 			carType = null;
 		}
 		if (dealerID == 0 || carType.equals("")) {
-			carType = null;
+			dealerID = null;
 		}
-		System.out.println(currPage + "/" + year + "/" + mouth + "/" + carType + "/" + dealerID);
+
 		int pageSize = 15;// 页大小
 		int count = service.total(year, mouth, carType, dealerID);// 总记录数
 		int pageAll = (int) Math.ceil(count * 1.0 / pageSize);// 计算总页数
@@ -121,8 +120,8 @@ public class DealerSellPlanCController {
 		mv.setViewName("sellManager/dealerSellPlanCensor");
 		mv.addObject("year", year);
 		mv.addObject("mouth", mouth);
-		mv.addObject("carType", typeDicService.findByTypecode(carType));
-		mv.addObject("dealerID", dealerService.find(dealerID));
+		mv.addObject("carType", carType);
+		mv.addObject("dealerID", dealerID);
 		
 		mv.addObject("years", years);
 		mv.addObject("typeDictionarys", typeDictionarys);
