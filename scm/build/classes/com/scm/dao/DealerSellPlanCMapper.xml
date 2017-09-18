@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scm.dao.DealerSellPlanCMapper">
+	
+	<select id="pageList" resultType="com.scm.pojo.DealerSellPlanCensor">
+		select * from (
+			select rownum rn,y.* from yearPlanDealerCount y 
+			<where>
+				 <![CDATA[rownum<=#{pageMax}]]>
+				<if test="year!=null and year!=''">
+					and year=#{year}
+				</if>
+				<if test="yearPlanMouth !=null and yearPlanMouth!=''">
+					and yearPlanMouth=#{yearPlanMouth}
+				</if>
+				<if test="typeCode!=null and typeCode!=''">
+					and typeCode=#{typeCode}
+				</if>
+				<if test="dealerId !=null and dealerId!=''">
+					and dealerId=#{dealerId}
+				</if>
+			</where>
+		) where rn >=#{pageMin}
+	</select>
+	
+	<select id="total" resultType="int">
+		Select count(*)  from yearPlanDealerCount 
+		<where> 
+			1=1
+			<if test="year !=null and year !=''">
+				and year=#{year}
+			</if>
+			<if test="mouth !=null and mouth !=''">
+				and yearplanmouth=#{mouth}
+			</if>
+			<if test="typeCode !=null and typeCode !=''">
+				and typeCode=#{typeCode}
+			</if>
+			<if test="dealerId !=null and dealerId !=''">
+				and dealerId=#{dealerId}
+			</if>
+		</where>
+	</select>
+</mapper>

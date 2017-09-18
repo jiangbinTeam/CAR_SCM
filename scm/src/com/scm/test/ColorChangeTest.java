@@ -40,10 +40,10 @@ public class ColorChangeTest {
 		System.out.println(service.update(color));
 	}
 	
-	@Test
+	/*@Test
 	public void testList() {
 		for(ColorChange c:service.list()) {
 			System.out.println(c);
 		}
-	}
+	}*/
 }

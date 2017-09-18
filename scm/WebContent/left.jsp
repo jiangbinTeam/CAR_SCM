@@ -175,7 +175,7 @@ H1 a {
           <li><a href="sellManager/sellPlanSelectByDealer.html" target="main">全年经销商销售计划查询</a></li>
           <li><a href="sellManager/dealerOrderManager.html" target="main">经销商订单管理</a></li>
           <li><a target="main" href="sellManager/startAccountingManager.html">发车台帐管理</a></li>
-          <li><a href="sellManager/dealerSellPlanCensor.html" target="main">经销商销售计划审查</a></li>
+          <li><a href="dealerSellPlanCensor" target="main">经销商销售计划审查</a></li>
 		  <li><a href="sellManager/dealerChargeBalance.html" target="main">经销商费用结算</a></li>
         </ul>
       </div>
@@ -255,8 +255,8 @@ H1 a {
           <li><a href="logistics" target="main">物流公司</a></li>
 		  <li><a href="colorChange" target="main">颜色转换对照表</a></li>
           <li><a href="tdyPage" target="main">车型字典表</a></li>
-		  <li><a href="baseManager/employee.html" target="main">员工管理</a></li>
-		  <li><a href="baseManager/dealer.html" target="main">经销商管理</a></li>
+		  <li><a href="ScmEmployeelist" target="main">员工管理</a></li>
+		  <li><a href="ScmDealerlist" target="main">经销商管理</a></li>
 		  <li><a href="baseManager/" target="main">权限权限管理</a></li>
         </ul>
       </div>

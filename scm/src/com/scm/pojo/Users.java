@@ -5,16 +5,16 @@ import java.io.Serializable;
 public class Users implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private String username;
+	private String userName;
 	private String password;
 	private Integer enabled;
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -33,9 +33,9 @@ public class Users implements Serializable {
 		this.enabled = enabled;
 	}
 
-	public Users(String username, String password, Integer enabled) {
+	public Users(String userName, String password, Integer enabled) {
 		super();
-		this.username = username;
+		this.userName = userName;
 		this.password = password;
 		this.enabled = enabled;
 	}

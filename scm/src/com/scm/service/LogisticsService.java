@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.scm.dao.LogisticsMapper;
 import com.scm.pojo.Logistics;
+import com.scm.pojo.TypeDictionary;
 
 @Service("logisticsService")
 @Transactional(propagation = Propagation.NOT_SUPPORTED, readOnly = true)
@@ -29,15 +30,27 @@ public class LogisticsService {
 	public List<Logistics> findAll() {
 		return logisticsMapper.findAll();
 	}
-	
-	//修改物流公司信息
+
+	// 修改物流公司信息
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, rollbackFor = Exception.class)
 	public int update(Logistics scmLogistics) {
 		return logisticsMapper.update(scmLogistics);
 	}
-	
-	//按id值查询物流公司信息
+
+	// 按id值查询物流公司信息
 	public Logistics findById(Integer logisticsId) {
 		return logisticsMapper.findById(logisticsId);
 	}
+
+	// 物流公司分页
+	public List<Logistics> findByPage(Integer pageMin, Integer pageMax) {
+		return logisticsMapper.findByPage(pageMin, pageMax);
+	}
+
+	// 查询记录条数
+	public int count() {
+
+		return logisticsMapper.count();
+	}
+
 }
