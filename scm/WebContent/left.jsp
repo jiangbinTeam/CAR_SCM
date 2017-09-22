@@ -224,7 +224,7 @@ H1 a {
           <li><a href="warehouseManager/warehouse.html" target="main">仓库管理</a></li>
           <li><a href="warehouseManager/storageAreas.html" target="main">库位管理</a></li>
           <li><a href="warehouseManager/carOutManager.html" target="main">汽车出库管理</a></li>
-		  <li><a href="warehouseManager/carInManager.html" target="main">汽车入库管理</a></li>
+		  <li><a href="warehouseManager/carInManager.jsp" target="main">汽车入库管理</a></li>
         </ul>
       </div>
 	  
@@ -270,10 +270,10 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-          <li><a href="finance/paymentList.html" target="main">打款管理</a></li>
+          <li><a href="paymentList" target="main">打款管理</a></li>
           <li><a href="finance/dealerAwards.html" target="main">经销商奖励</a></li>
 		  <li><a href="finance/paymentCarriageCharge.html" target="main">经销商运费管理</a></li>
-		  <li><a href="finance/dealerPaymentCar.html" target="main">经销商付车款</a></li>
+		  <li><a href="dealerPaymentCar" target="main">经销商付车款</a></li>
 		  <li><a href="finance/invoiceNumber.html" target="main">开票</a></li>
         </ul>
       </div>

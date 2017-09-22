@@ -20,8 +20,8 @@ public class Vin implements Serializable {
 	private String engineCode;
 	private Date invoiceDate;
 	private String produceCountry;
-	private Integer stockPrice;
-	private Integer sellPrice;
+	private Double stockPrice;
+	private Double sellPrice;
 	private Integer issell;
 	private Integer outOfStorage;
 	private Date actualPaymentDate;
@@ -29,37 +29,6 @@ public class Vin implements Serializable {
 	private Date sellDate;
 	private Integer ifRetrofitting;
 	private String addAccessorizeNote;
-
-	public Vin(String vinNumber, Integer waybillId, Integer yearPlanDealerAnalyzeId, Integer carProcurementListId,
-			Integer paymentListId, String typeCode, String colorCode, Integer ifsell, Date productionDate,
-			Integer procedureComplete, String invoiceNumber, String engineCode, Date invoiceDate, String produceCountry,
-			Integer stockPrice, Integer sellPrice, Integer issell, Integer outOfStorage, Date actualPaymentDate,
-			String vinLast, Date sellDate, Integer ifRetrofitting, String addAccessorizeNote) {
-		super();
-		this.vinNumber = vinNumber;
-		this.waybillId = waybillId;
-		this.yearPlanDealerAnalyzeId = yearPlanDealerAnalyzeId;
-		this.carProcurementListId = carProcurementListId;
-		this.paymentListId = paymentListId;
-		this.typeCode = typeCode;
-		this.colorCode = colorCode;
-		this.ifsell = ifsell;
-		this.productionDate = productionDate;
-		this.procedureComplete = procedureComplete;
-		this.invoiceNumber = invoiceNumber;
-		this.engineCode = engineCode;
-		this.invoiceDate = invoiceDate;
-		this.produceCountry = produceCountry;
-		this.stockPrice = stockPrice;
-		this.sellPrice = sellPrice;
-		this.issell = issell;
-		this.outOfStorage = outOfStorage;
-		this.actualPaymentDate = actualPaymentDate;
-		this.vinLast = vinLast;
-		this.sellDate = sellDate;
-		this.ifRetrofitting = ifRetrofitting;
-		this.addAccessorizeNote = addAccessorizeNote;
-	}
 
 	public Vin() {
 		super();
@@ -177,19 +146,19 @@ public class Vin implements Serializable {
 		this.produceCountry = produceCountry;
 	}
 
-	public Integer getStockPrice() {
+	public Double getStockPrice() {
 		return stockPrice;
 	}
 
-	public void setStockPrice(Integer stockPrice) {
+	public void setStockPrice(Double stockPrice) {
 		this.stockPrice = stockPrice;
 	}
 
-	public Integer getSellPrice() {
+	public Double getSellPrice() {
 		return sellPrice;
 	}
 
-	public void setSellPrice(Integer sellPrice) {
+	public void setSellPrice(Double sellPrice) {
 		this.sellPrice = sellPrice;
 	}
 
@@ -247,10 +216,6 @@ public class Vin implements Serializable {
 
 	public void setAddAccessorizeNote(String addAccessorizeNote) {
 		this.addAccessorizeNote = addAccessorizeNote;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 }

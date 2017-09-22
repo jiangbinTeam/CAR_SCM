@@ -2,13 +2,16 @@ package com.scm.pojo;
 
 import java.io.Serializable;
 
+/*
+ * 仓库Id
+ */
 public class Warehouse implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer warehouseId;
-	private String warehouseName;
-	private String warehouseAddress;
+	private Integer warehouseId;//id
+	private String warehouseName;//名称
+	private String warehouseAddress;//地址
 
 	public Warehouse(Integer warehouseId, String warehouseName, String warehouseAddress) {
 		super();

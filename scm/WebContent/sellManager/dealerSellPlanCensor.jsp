@@ -129,7 +129,7 @@
 		
 		<td width="6%" align="left"><span class="left_bt2">请选择车型</span></td>
 		<td width="22%">
-			<c:if test="${carType==0}">
+			<c:if test="${carType=='0'}">
 			 <select name="carType" class="sec2" style="width:250px">
 				<option value="0" selected="selected">请选择</option>
 				 <c:forEach items="${typeDictionarys}" var="t">
@@ -137,15 +137,22 @@
 				</c:forEach>	  
 			  </select>
 			</c:if>
-			<c:if test="${carType!=0}">
-				<select name="carType" class="sec2" style="width:100px">
-				<option value="${carType.typeCode}" selected="selected">${carType.brand}</option>
+			<c:if test="${carType!='0'}">
+				<select name="carType" class="sec2" style="width:250px">
+				<!-- 回显选择项 -->
+				<c:forEach items="${typeDictionarys}" var="type">
+					 <c:if test="${carType==type.typeCode}"> 
+						 <option value="${type.typeCode}" selected="selected">${type.brand}</option>	 
+					</c:if> 
+				</c:forEach>	
+				  
 				<option value="0">请选择</option>
 				<c:forEach items="${typeDictionarys}" var="t">
-					 <c:if test="${carType.typeCode!=t.typeCode}"> 
+					 <c:if test="${carType!=t.typeCode}"> 
 						 <option value="${t.typeCode}">${t.brand}</option>	 
 					</c:if> 
-				</c:forEach>	  
+				</c:forEach>	
+				  
 			  </select>
 			</c:if>
 	    </td>
@@ -161,11 +168,16 @@
 			  </select>
 			</c:if>
 			<c:if test="${dealerID!=''}">
-				<select name="dealerID" class="sec2" style="width:100px">
-					<option value="${dealerID.dealerId}" selected="selected">${dealerID.storefrontName}</option>
+				<select name="dealerID" class="sec2" style="width:250px">
+					<!-- 回显选择项 -->
+					<c:forEach items="${dealers}" var="d">
+						 <c:if test="${dealerID==d.dealerId}"> 
+							 <option value="${d.dealerId}">${d.storefrontName}</option>	 
+						</c:if> 
+					</c:forEach>
 					<option value="0">请选择</option>
 					<c:forEach items="${dealers}" var="d">
-						 <c:if test="${dealerID.dealerId!=d.dealerId}"> 
+						 <c:if test="${dealerID!=d.dealerId}"> 
 							 <option value="${d.dealerId}">${d.storefrontName}</option>	 
 						</c:if> 
 					</c:forEach>	  
@@ -179,55 +191,62 @@
 	<table width="98%" border="0" style="text-align: center;" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<thead class="thead">
 	    	<tr>
-				<th width="8%">序号</th>
-				<th width="27%">经销商</th>
+				<th width="7%">序号</th>
+				<th width="21%">经销商</th>
 				<th width="12%">品牌</th>
-				<th width="17%">车辆编码</th>
-				<th width="13%">年份</th>	
-				<th width="10%">月份</th>	
-				<th width="13%">计划数量</th>	
-				
+				<th width="15%">车辆编码</th>
+				<th width="12%">年份</th>	
+				<th width="8%">月份</th>	
+				<th width="12%">计划数量</th>	
+				<th width="13%">销售明细</th>	
 			</tr>
 		</thead>
 		<tbody class="tbody">
-			<c:forEach items="${dealerSellPlanCs}" var="d" varStatus="i">
-				 <tr>
-					<td>${i.index+1}</td>
-					<td>${d.storefrontName }</td>
-					<td>${d.brand }</td>
-					<td>${d.typeCode }</td>
-					<td>${d.year }</td>
-					<td>${d.yearPlanMouth }</td>	
-					<td>${d.yearPlanDealerCount }</td>	
-					<!-- <td><a href="dealerSellPlanCensorList.html" style="color:#000099">80</a></td>	 -->
+			<c:if test="${empty dealerSellPlanCs}">
+				<tr>
+					<td colspan="7" style="font-size: 18px;">没有符合条件的数据</td>
 				</tr>
-			</c:forEach>
+			</c:if>
+			<c:if test="${!empty dealerSellPlanCs}">
+				<c:forEach items="${dealerSellPlanCs}" var="d" varStatus="i">
+					 <tr>
+						<td>${i.index+1}</td>
+						<td>${d.storefrontName }</td>
+						<td>${d.brand }</td>
+						<td>${d.typeCode }</td>
+						<td>${d.year }</td>
+						<td>${d.yearPlanMouth }</td>	
+						<td>${d.yearPlanDealerCount }</td>	
+						<td><a href="dealerSellPlanCensorList?dealerId=${d.dealerId }&typeCode=${d.typeCode}&year=${d.year}&month=${d.yearPlanMouth}" 
+							style="color:#000099">销售明细</a></td>
+					</tr>
+				</c:forEach>
+			</c:if>
 		</tbody>						
     </table>
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<tr>
 			<td width="869">&nbsp;</td>
 			<td width="63" align="right">
-				<a href="listPage?currPage=1&year=${year}&mouth=${mouth}&typecode=${carType}&dealerId=${dealerID}">
+				<a href="listPage?currPage=1&year=${year}&mouth=${mouth}&carType=${carType}&dealerID=${dealerID}">
 					<span class="left_ts">首页</span>
 				</a>
 			</td>
 			<td width="63" align="right">
-				<a href="listPage?currPage=${currPage-1}&year=${year}&mouth=${mouth}&typecode=${carType}&dealerId=${dealerID}">
+				<a href="listPage?currPage=${currPage-1}&year=${year}&mouth=${mouth}&carType=${carType}&dealerID=${dealerID}">
 					<span class="left_ts">上一页</span>
 				</a>
 			</td>
 			<td width="63" align="center">
 				<span class="admin_toptxt">${currPage }/${totalPage }</span></td>
 			<td width="66" align="left">
-				<a href="listPage?currPage=${currPage+1}&year=${year}&mouth=${mouth}&typecode=${carType}&dealerID=${dealerID}">
+				<a href="listPage?currPage=${currPage+1}&year=${year}&mouth=${mouth}&carType=${carType}&dealerID=${dealerID}">
 					<span class="left_ts">下一页</span>
 				</a>
 			</td>
 			<td width="63" align="left">
-				<a href="listPage?currPage=${totalPage}&year=${year}&mouth=${mouth}&typecode=${carType}&dealerID=${dealerID}">
+				<a href="listPage?currPage=${totalPage}&year=${year}&mouth=${mouth}&carType=${carType}&dealerID=${dealerID}">
 					<span class="left_ts">尾页</span>
-					${year}/${mouth}/${carType}/${dealerID}
 				</a>
 			</td>
 		</tr>

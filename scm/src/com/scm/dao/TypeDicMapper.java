@@ -29,7 +29,7 @@ public interface TypeDicMapper {
 	List<TypeDictionary> list();// 查询所有的车型信息
 
 	@Select("select * from  (select rownum nb,e.* from  scm_typeDictionary e) t "
-			+ "where t.nb>=#{pageMin} and t.nb<=#{pageMax}") // 分页
+			+ " where t.nb>=#{pageMin} and t.nb<=#{pageMax}") // 分页
 	List<TypeDictionary> findByPageTdy(@Param("pageMin") Integer pageMin, @Param("pageMax") Integer pageMax);
 
 	@Select("select count(typeCode) from  scm_typeDictionary")
