@@ -1,21 +1,20 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>采购管理</title>
     
 	<link href="${pageContext.request.contextPath}/resources/images/skin.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/resources/images/fox.css" rel="stylesheet" type="text/css" />
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/myjs.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
+
 <script type="text/javascript" language="JavaScript">
 
 
@@ -26,12 +25,27 @@ $(".tbody tr").hover(
   }, 
   function(){ 
     $(this).removeClass("hover");   //鼠标离开移除hover样式 
-  } 
-); 
+  }); 
+
+$("#selectType").click(function(){ //click() 点击事件
+		$.ajax({
+			url:"selectType", //请求的地址
+			type:"get", //请求方式为get
+			success:function(data){ //success指的是请求并成功返回信息 data返回的内容
+				var type =eval("(" + data + ")"); //转换为json对象 
+				var PlanYear=null; 
+				$("#selectType").empty(); // empty() 删除匹配的元素集合中所有的子节点。
+				$.each(type,function(key,value){	// each() 循环 //遍历处理data(type)
+					if(value.yearProcurementPlanYear!=PlanYear){
+							var op="<option value="+value.yearProcurementPlanYear+">"+value.yearProcurementPlanYear+"</option>";
+				 			$("#selectType").append(op); // .append 向每个匹配的元素内部追加内容。
+				 			PlanYear =value.yearProcurementPlanYear;
+					}
+				});
+			}
+		});
+	});
 }); 
-
-
-
 </script> 
 <style type="text/css"> 
 .hover{background-color:#CACACA;}  /*这里是鼠标经过时的颜色*/ 
@@ -74,28 +88,29 @@ body {
 
 	</tr>
 	</table>
+	<form action="yearProcurementPlanSelect" method="post">
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<tr>
 		
 		<td width="4%"><span class="left_bt2">输入</span></td>
-		<td width="10%"><select name="projectname" class="sec2" style="width:100px">
-	  	<option value="2009" selected="selected">2009</option>
-		<option value="2010">2010</option>
-		<option value="2011">2011</option>
-		<option value="2012">2012</option>
-		<option value="2013">2013</option>
-		<option value="2014">2014</option>
-		<option value="2015">2015</option>
-		<option value="2016">2016</option>
-		<option value="2017">2017</option>
-		<option value="2018">2018</option>
-		<option value="2019">2019</option>
-		<option value="2020">2020</option>
-	  </select></td>
+		<td width="10%">
+	  			<c:if test="${empty yearProcurementPlanYear}">
+	  				<select id="selectType" name="yearProcurementPlanYear" class="sec2" style="width:100px">
+			          <option value="0" >请选择</option>		          		         	 	        
+					</select>
+				</c:if>
+				<c:if test="${!empty yearProcurementPlanYear}">
+					<select id="selectType" name="yearProcurementPlanYear" class="sec2" style="width:100px">
+			         <%-- <option value="${yearProcurementPlanYear}">${yearProcurementPlanYear}</option> --%>
+					</select>
+				</c:if>
+	  </select>
+	  </td>
 		<td width="11%"><input type="submit" class="Submit" value="查看全年计划"/></td>
 		<td width="75%"></td>
 	</tr>
 	</table>
+	</form>
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<thead class="thead">
 		<tr>
@@ -111,76 +126,36 @@ body {
 		</thead>
 		<tbody class="tbody">
 		 <tr>
-		<td >1</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td>80%</td>
+			<c:forEach items="${list}" var="list" varStatus="i">
+					 <tr>
+						<td>${i.index+1}</td>
+						<td>${list.yearProcurementPlanYear}</td>
+						<td>${list.brand}</td>
+						<td>${list.typeCode}</td>
+						<td>${list.carCharacter}</td>
+						<td>${list.yearProcurementPlanCount}</td>
+						<td><a style="color:#CC0000">${list.carProcurementListCount}</a></td>
+						<td align="center">
+							<c:if test="${(list.carProcurementListCount/list.yearProcurementPlanCount)*100==100}">完成</c:if>
+							<c:if test="${(list.carProcurementListCount/list.yearProcurementPlanCount)*100!=100}">
+							${(list.carProcurementListCount/list.yearProcurementPlanCount)*100}%</c:if>
+						</td>
+					 </tr>
+				</c:forEach>
 		</tr>
-		 <tr>
-		<td>2</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td>80%</td>
-		</tr>
-		 <tr>
-		<td>3</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td>100</td>
-		<td><a style="color:#CC0000">80</a></td>
-		<td>80%</td>	
-		</tr>
-		 <tr>
-		<td>4</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td>100</td>
-		<td><a style="color:#CC0000">80</a></td>
-		<td>80%</td>	
-		</tr>
-		 <tr>
-		<td>5</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td>100</td>
-		<td><a style="color:#CC0000">80</a></td>
-		<td>80%</td>	
-		</tr>
-		 <tr>
-		<td>6</td>
-		<td>2009</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>	
-		<td>4.7 自动 四驱</td>	
-		<td>100</td>
-		<td><a style="color:#CC0000">80</a></td>
-		<td>80%</td>	
-		</tr>			
 		</tbody>	
     </table>
 		<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<tr>
-		
-		<td width="89%">&nbsp;</td>
-		<td width="11%" align="center">
-			<a href="javascript:history.back()" class="red">
-		  <input type="submit" class="Submit" value="返  回" onclick="javascript:history.back()"/></a>		</td>
-	</tr>
+		  <td width="869">&nbsp;</td>
+		   <td width="63" align="right"><a href="yearProcurementPlanSelect?currPage=1"><span class="left_ts">首页</span></a></td>
+		  <td width="63" align="right"><a href="yearProcurementPlanSelect?currPage=${currPage-1}"><span class="left_ts">上一页</span></a></td>
+		  <td width="63" align="center"><span class="admin_toptxt">${currPage }/${totalPage }</span></td>
+		  <td width="66" align="left"><a href="yearProcurementPlanSelect?currPage=${currPage+1}"><span class="left_ts">下一页</span></a></td>
+		  <td width="63" align="left"><a href="yearProcurementPlanSelect?currPage=${totalPage}"><span class="left_ts">尾页</span></a></td>
+		</tr>
 	</table>
+	
 	</td>
     <td background="${pageContext.request.contextPath}/resources/images/mail_rightbg.gif">&nbsp;</td>
   </tr>
@@ -190,9 +165,5 @@ body {
     <td valign="bottom" background="${pageContext.request.contextPath}/resources/images/mail_rightbg.gif"><img src="${pageContext.request.contextPath}/resources/images/buttom_right2.gif" width="16" height="17" /></td>
   </tr>
 </table>
-页面要求：<br />
-1.此界面为租赁船期界面，其中租赁费用为每趟的价格，单位是万。<br />
-2.分页每页显示15条数据。<br />
-3.船期编号10位<br />
 </body>
 </html>

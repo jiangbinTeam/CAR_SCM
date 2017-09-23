@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.scm.dao.YearProcurementMapper;
+import com.scm.pojo.TypeDictionary;
+import com.scm.pojo.YearProcurement;
 import com.scm.pojo.YearProcurementPlan;
 
 @Service("yearProcurementService")
@@ -38,12 +40,32 @@ public class YearProcurementService {
 	}
 	
 	//列出全年采购计划
-	public List<YearProcurementPlan> findAll(){
+	public List<YearProcurement> findAll(){
 		return yearProcurementMapper.findAll();
 	}
 	
-	//通过id查找全年采购计划
-	public YearProcurementPlan findById(Integer yearProcurementPlanId){
+	//判断本年是否还有未做采购计划的车型
+	public List<YearProcurement> find(){
+		return yearProcurementMapper.find();
+	}
+	
+	//通过年份查全年采购计划
+	public List<YearProcurement> findYear(Integer yearProcurementPlanYear){
+		return yearProcurementMapper.findYear(yearProcurementPlanYear);
+	}
+	
+	//按id查全年采购计划
+	public YearProcurement findById(Integer yearProcurementPlanId){
 		return yearProcurementMapper.findById(yearProcurementPlanId);
+	}
+	
+	//分页查询
+	public List<YearProcurement> findByPage(Integer pageMin, Integer pageMax, Integer yearProcurementPlanYear){
+		return yearProcurementMapper.findByPage(pageMin, pageMax,yearProcurementPlanYear);
+	}
+	
+	//查询记录条数
+	public int countPage(){
+		return yearProcurementMapper.countPage();
 	}
 }

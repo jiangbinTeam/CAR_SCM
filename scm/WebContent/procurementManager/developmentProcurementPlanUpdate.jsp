@@ -66,9 +66,13 @@ body {
 
 	</tr>
 	</table>
+	 <form action="yearProcurementPlanUpdate" method="post">
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<tr>
-		<td width="100%" align="center"><input type="button" style="width:100px" class="Submit"  value="返回" onclick="window.location='yearProcurementPlanPage'"></td>
+		<td width="100%" align="center">
+			<button type="submit" class="Submit"  style="width:100px">保存采购计划</button>
+			<input type="button" style="width:100px" class="Submit"  value="返回" onclick="window.location='yearProcurementPlanPage'">
+		</td>
 	</tr>
 	</table>
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
@@ -84,31 +88,24 @@ body {
 		</tr>
 		</thead>
 		<tbody class="tbody">
-			<c:forEach items="${ypp}" var="add" varStatus="i">
-				<form action="yearProcurementPlanCreate" method="post">
 				<%-- <c:if test="${empty add.yearProcurementPlanCount}"> --%>
 					 <tr>
-						<td>${i.index+1}</td>
-						<td><%-- <input name="yearProcurementPlanYear" required="required"  type="text"  value="${yppy}" style="border:none;background-color:#f7f8f9;" readonly= "true "> --%>
-							${yppy}
-						<input type="hidden" name="yearProcurementPlanYear" value="${yppy}">
+						<td>1</td>
+						<input type="hidden" name="yearProcurementPlanId" value="${ypp.yearProcurementPlanId}">
+						<td><input type="text" name="yearProcurementPlanYear" value="${ypp.yearProcurementPlanYear}" required="required"></td>
+						<td>${ypp.brand}</td>
+						<td>${ypp.typeCode}
+						<input type="hidden" name="typeCode" value="${ypp.typeCode}">
 						</td>
-						<td>${add.brand}</td>
-						<td>${add.typeCode}
-						<input type="hidden" name="typeCode" value="${add.typeCode}">
-						</td>
-						<td>${add.carCharacter}</td>
-						<td><a style="color:#CC0000">${add.carProcurementListCount}</a></td>
-						<td><input name="yearProcurementPlanCount" required="required"  type="text"  onkeyup="this.value=this.value.replace(/[^\d]/g,'');"></td> <!-- 不能为空 只能输入数字 -->
+						<td>${ypp.carCharacter}</td>
+						<td><a style="color:#CC0000">${ypp.carProcurementListCount}</a></td>
+						<td><input name="yearProcurementPlanCount" value="${ypp.yearProcurementPlanCount}"  required="required"  type="text"  onkeyup="this.value=this.value.replace(/[^\d]/g,'');"></td> <!-- 不能为空 只能输入数字 -->
 						<!-- <input type="hidden" name="ifDecomposition" value="0"> -->
-						<td width="100%" align="center"><button type="submit" class="Submit"  style="width:100px">保存采购计划</button></td>
 					 </tr>
 					<%-- </c:if> --%>
-					</form>
-				</c:forEach>
 			</tbody>
     </table>
-    
+    </form>
 	</td>
     <td background="${pageContext.request.contextPath}/resources/images/mail_rightbg.gif">&nbsp;</td>
   </tr>

@@ -1,21 +1,16 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
+
     <title>采购管理</title>
     
 	<link href="${pageContext.request.contextPath}/resources/images/skin.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/resources/images/fox.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-
 <script type="text/javascript" language="JavaScript">
 $(function(){  //文档加载 
 $(".tbody tr").hover( 
@@ -24,11 +19,9 @@ $(".tbody tr").hover(
   }, 
   function(){ 
     $(this).removeClass("hover");   //鼠标离开移除hover样式 
-  }
-
-); 
+  }); 
 }); 
-</script> 
+</script>  
 <style type="text/css"> 
 .hover{background-color:#CACACA;}  /*这里是鼠标经过时的颜色*/ 
 
@@ -66,22 +59,24 @@ body {
 		<img src="${pageContext.request.contextPath}/resources/images/icon-login-seaver.gif" width="16" height="16" />
 		</td>
 		<td>
-		当前位置：采购管理>>全年采购计划分解>>全年分解采购计划(decompositionProcurementPlanCreate.html)
+		当前位置：采购管理>>全年采购计划分解>>全年分解采购计划
 		</td>
 
 	</tr>
 	</table>
+	<form action="procurementPlanAdd" method="post">
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<tr>
 		
 		<td width="9%"><span class="left_bt2">全年计划总量</span></td>
-		<td width="32%"><span class="left_txt">100</span></td>
+		<td width="32%"><span class="left_txt">${ypp.yearProcurementPlanCount}</span></td>
 		<td width="59%">
-		<input type="button" class="Submit" value="保存" style="width:100px"/>
+		<input type="submit" class="Submit" value="保存" style="width:100px"/>
 		<input type="button" class="Submit" value="返回" style="width:100px" onclick="javascript:history.back()"/>
 		</td>
 	</tr>
 	</table>
+	
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<thead class="thead">
 	    <tr>
@@ -94,106 +89,22 @@ body {
 		</tr>
 		</thead>
 		<tbody class="tbody">
-		 <tr>
-		<td >1</td>
-		<td >大切诺基</td>
-		<td >BJ2021V8</td>
-		<td >2009</td>
-		<td >1</td>	
-		<td ><input type="text" class="editbox4" value="提交"/></td>	
-		</tr>
-		 <tr>
-		<td >2</td>
-		<td >大切诺基</td>
-		<td >BJ2021V8</td>
-		<td >2009</td>
-		<td >2</td>	
-		<td ><input type="text" class="editbox4" value="提交"/></td>	
-		</tr>
-		 <tr>
-		<td >3</td>
-		<td >大切诺基</td>
-		<td >BJ2021V8</td>
-		<td >2009</td>
-		<td >3</td>	
-		<td ><input type="text" class="editbox4" value="提交"/></td>	
-		</tr>
-		 <tr>
-		<td >4</td>
-		<td >大切诺基</td>
-		<td >BJ2021V8</td>
-		<td >2009</td>
-		<td >4</td>	
-		<td ><input type="text" class="editbox4" value="提交"/></td>	
-		</tr>
-		 <tr>
-		<td >5</td>
-		<td >大切诺基</td>
-		<td >BJ2021V8</td>
-		<td >2009</td>
-		<td >5</td>	
-		<td ><input type="text" class="editbox4" value="提交"/></td>	
-		</tr>
-		 <tr>
-		<td >6</td>
-		<td >大切诺基</td>
-		<td >BJ2021V8</td>
-		<td >2009</td>
-		<td >6</td>	
-		<td ><input type="text" class="editbox4" value="提交"/></td>	
-		</tr>
-		<tr>
-		<td >7</td>
-		<td >大切诺基</td>
-		<td >BJ2021V8</td>
-		<td >2009</td>
-		<td >7</td>	
-		<td ><input type="text" class="editbox4" value="提交"/></td>	
-		</tr>
-		 <tr>
-		<td >8</td>
-		<td >大切诺基</td>
-		<td >BJ2021V8</td>
-		<td >2009</td>
-		<td >8</td>	
-		<td ><input type="text" class="editbox4" value="提交"/></td>	
-		</tr>	
-		 <tr>
-		<td >9</td>
-		<td >大切诺基</td>
-		<td >BJ2021V8</td>
-		<td >2009</td>
-		<td >9</td>	
-		<td ><input type="text" class="editbox4" value="提交"/></td>	
-		</tr>
-		 <tr>
-		<td >10</td>
-		<td >大切诺基</td>
-		<td >BJ2021V8</td>
-		<td >2009</td>
-		<td >10</td>	
-		<td ><input type="text" class="editbox4" value="提交"/></td>	
-		</tr>	
-		 <tr>
-		<td >11</td>
-		<td >大切诺基</td>
-		<td >BJ2021V8</td>
-		<td >2009</td>
-		<td >11</td>	
-		<td ><input type="text" class="editbox4" value="提交"/></td>	
-		</tr>	
-		 <tr>
-		<td >12</td>
-		<td >大切诺基</td>
-		<td >BJ2021V8</td>
-		<td >2009</td>
-		<td >12</td>	
-		<td ><input type="text" class="editbox4" value="提交"/></td>	
-		</tr>
-		</tbody>						
+				<c:forEach begin="0" end="11" varStatus="i">
+					 <tr>
+					 	<input type="hidden" name="ppa[${i.index}].yearProcurementPlanId" value="${ypp.yearProcurementPlanId}">
+						<td>${i.index+1}</td>
+						<td>${ypp.brand}</td>
+						<td>${ypp.typeCode}</td>
+						<td>${ypp.yearProcurementPlanYear}</td>
+						<td>${i.index+1}<input type="hidden" name="ppa[${i.index}].procurementPlanAnalyzeMonth" value="${i.index+1}"></td>
+						<td><input name="ppa[${i.index}].procurementPlanAnalyzeCount" required="required"  type="text"  onkeyup="this.value=this.value.replace(/[^\d]/g,'');"></td> <!-- 不能为空 只能输入数字 -->
+					 </tr>
+				</c:forEach>
+		</tbody>			
     </table>
+    </form>	
 	</td>
-    <td background="${pageContext.request.contextPath}/resources/images/mail_rightbg.gif">&nbsp;</td>
+    <td background="${pageContext.request.contextPath}/images/mail_rightbg.gif">&nbsp;</td>
   </tr>
   <tr>
     <td valign="bottom" background="${pageContext.request.contextPath}/resources/images/mail_leftbg.gif"><img src="${pageContext.request.contextPath}/resources/images/buttom_left2.gif" width="17" height="17" /></td>
@@ -201,10 +112,5 @@ body {
     <td valign="bottom" background="${pageContext.request.contextPath}/resources/images/mail_rightbg.gif"><img src="${pageContext.request.contextPath}/resources/images/buttom_right2.gif" width="16" height="17" /></td>
   </tr>
 </table>
-页面说明：<br />
-1.这里显示的是本年度某车型在12个月内的计划分解。<br />
-2.对于输入的数字要做验证，输入的必须是数字。<br />
-3.在某月每输入一个数字那么全年计划数量将会减少。<br />
-
 </body>
 </html>

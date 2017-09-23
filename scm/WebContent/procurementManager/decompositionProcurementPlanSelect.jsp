@@ -1,19 +1,16 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
     
     <title>采购管理</title>
-    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link href="${pageContext.request.contextPath}/resources/images/skin.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/resources/images/fox.css" rel="stylesheet" type="text/css" />
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script type="text/javascript" language="JavaScript">
 $(function(){  //文档加载 
@@ -67,7 +64,7 @@ body {
 		<img src="${pageContext.request.contextPath}/resources/images/icon-login-seaver.gif" width="16" height="16" />
 		</td>
 		<td>
-		当前位置：采购管理>>全年采购计划分解(decompositionProcurementPlanSelect.html)
+		当前位置：采购管理>>全年采购计划分解
 		</td>
 
 	</tr>
@@ -125,128 +122,32 @@ body {
 		</tr>
 		</thead>
 		<tbody class="tbody">
+		<c:forEach items="${list}" var="car" varStatus="i">
 		 <tr>
-		<td>1</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>
-		<td>2009</td>
-		<td>1</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>	
-		<td><a href="#" style="color:#000099">修改</a></td>
-		</tr>
-		 <tr>
-		<td>2</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>
-		<td>2009</td>
-		<td>2</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><a href="#" style="color:#000099">修改</a></td>
-		</tr>
-		 <tr>
-		<td>3</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>
-		<td>2009</td>
-		<td>3</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><a href="#" style="color:#000099">修改</a></td>
-		</tr>
-		 <tr>
-		<td>4</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>
-		<td>2009</td>
-		<td>4</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><a href="#" style="color:#000099">修改</a></td>
-	    </tr>
-		 <tr>
-		<td>5</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>
-		<td>2009</td>
-		<td>5</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><a href="#" style="color:#000099">修改</a></td>
-	    </tr>
-		 <tr>
-		<td>6</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>
-		<td>2009</td>
-		<td>6</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><a href="#" style="color:#000099">修改</a></td>
-	    </tr>
-		<tr>
-		<td>7</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>
-		<td>2009</td>
-		<td>7</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><a href="#" style="color:#000099">修改</a></td>
-		</tr>
-		 <tr>
-		<td>8</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>
-		<td>2009</td>
-		<td>8</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><a href="#" style="color:#000099">修改</a></td>
-	    </tr>	
-		 <tr>
-		<td>9</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>
-		<td>2009</td>
-		<td>9</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><a href="#" style="color:#000099">修改</a></td>
-	    </tr>
-		 <tr>
-		<td>10</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>
-		<td>2009</td>
-		<td>10</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><a href="#" style="color:#000099">修改</a></td>
-	    </tr>	
-		 <tr>
-		<td>11</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>
-		<td>2009</td>
-		<td>11</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>
-		<td><a href="#" style="color:#000099">修改</a></td>
-	    </tr>	
-		 <tr>
-		<td>12</td>
-		<td>大切诺基</td>
-		<td>BJ2021V8</td>
-		<td>2009</td>
-		<td>12</td>	
-		<td>100</td>	
-		<td><a style="color:#CC0000">80</a></td>	
-		<td><a href="#" style="color:#000099">修改</a></td>
-	    </tr>
+			<td>${i.index+1}</td>
+			<td>${car.brand}</td>
+			<td>${car.typeCode}</td>
+			<td>${car.yearProcurementPlanYear}</td>
+			<td>${car.procurementPlanAnalyzeMonth}</td>
+			<td>${car.procurementPlanAnalyzeCount}</td>
+			<td><a style="color:#CC0000">${car.carProcurementListCount}</a></td>	
+			<td><a href="procurementPlanupdates?yearProcurementPlanYear=${car.yearProcurementPlanYear}&yearProcurementPlanId=${car.yearProcurementPlanId}" style="color:#000099">修改</a></td>
+		 </tr>
+		 </c:forEach>
 		</tbody>						
     </table>
+    <c:if test="${!empty currPage}">
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<tr>
+		  <td width="869">&nbsp;</td>
+		   <td width="63" align="right"><a href="procurementPlanPage?currPage=1"><span class="left_ts">首页</span></a></td>
+		  <td width="63" align="right"><a href="procurementPlanPage?currPage=${currPage-1}"><span class="left_ts">上一页</span></a></td>
+		  <td width="63" align="center"><span class="admin_toptxt">${currPage }/${totalPage }</span></td>
+		  <td width="66" align="left"><a href="procurementPlanPage?currPage=${currPage+1}"><span class="left_ts">下一页</span></a></td>
+		  <td width="63" align="left"><a href="procurementPlanPage?currPage=${totalPage}"><span class="left_ts">尾页</span></a></td>
+		</tr>
+	</table>
+	</c:if>
 	</td>
     <td background="${pageContext.request.contextPath}/resources/images/mail_rightbg.gif">&nbsp;</td>
   </tr>
@@ -256,11 +157,5 @@ body {
     <td valign="bottom" background="${pageContext.request.contextPath}/resources/images/mail_rightbg.gif"><img src="${pageContext.request.contextPath}/resources/images/buttom_right2.gif" width="16" height="17" /></td>
   </tr>
 </table>
-页面要求：<br />
-1.年份下拉框是根据“全年采购计划表”中的年份来。如果系统还没有创建过全年采购计划，那么请选择年份下拉框中数据有一条为“无”。<br />
-2.根据选择的年份来确定车型，这要使用AJAX省市互动来做，要完成根据选择年份的查询出本年份内已经分解过的车型信息并显示到请选择车型下拉框中，<br/>
-如果查询出来的信息为空那么在“请选择车型下拉框”中显示一条记录为空。<br/>
-3.如果2个下拉框中只要有一个下拉框中的值未选择，那么给予提示，并且不能进行查询操作，直到2个查询条件全部正确选择了值。<br />
-4.点击修改后，计划数量变为文本框并且将原先的数字默认输入到文本框内，同事修改变为保存，当点击保存后需要做非空和有效性验证。
 </body>
 </html>

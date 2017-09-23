@@ -61,7 +61,7 @@ body {
 		<img src="${pageContext.request.contextPath}/resources/images/icon-login-seaver.gif" width="16" height="16" />
 		</td>
 		<td>
-		当前位置：采购管理>>制定全年采购计划(developmentProcurementPlan.html)
+		当前位置：采购管理>>制定全年采购计划
 		</td>
 
 	</tr>
@@ -69,8 +69,8 @@ body {
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<tr>
 		<td width="100%" align="center">
-		<input type="submit" class="Submit" value="创建本年计划" onclick="window.location='developmentProcurementPlanCreate.html'"/>
-		<input type="button" class="Submit" value="查看历史记录" onclick="window.location='developmentProcurementPlanSelect.html'"/>
+		<input type="submit" class="Submit" value="创建本年计划" onclick="window.location='yearProcurementPlanafind'"/>
+		<input type="button" class="Submit" value="查看历史记录" onclick="window.location='yearProcurementPlanSelect'"/>
 		 </td>
 
 	</tr>
@@ -89,28 +89,36 @@ body {
 		</tr>
 		</thead>
 		<tbody class="tbody">
-				<c:forEach items="${ypp}" var="yearProcurementPlan" varStatus="i">
+				<c:forEach items="${list}" var="list" varStatus="i">
 					 <tr>
 						<td>${i.index+1}</td>
-						<td>${yearProcurementPlan.yearProcurementPlanYear}</td>
-						<td>${yearProcurementPlan.typeDictionary.brand}</td>
-						<td>${yearProcurementPlan.typeDictionary.typeCode}</td>
-						<td>${yearProcurementPlan.typeDictionary.carCharacter}</td>
-						<td>${yearProcurementPlan.yearProcurementPlanCount}</td>
-						<td>${yearProcurementPlan.yearProcurementPlanCount}</td>
-						<%-- <td><a href="colorChangeCreate?colorCode=${colorChange.colorCode}" style="color:#000099">修改</a></td> --%>
+						<td>${list.yearProcurementPlanYear}</td>
+						<td>${list.brand}</td>
+						<td>${list.typeCode}</td>
+						<td>${list.carCharacter}</td>
+						<td>${list.yearProcurementPlanCount}</td>
+						<td><a style="color:#CC0000">${list.carProcurementListCount}</a></td>
+						<td>
+							<a href="yearProcurementPlanafindId?yearProcurementPlanId=${list.yearProcurementPlanId}" style="color:#000099">修改</a>
+							<c:if test="${(list.ifDecomposition)==1}">
+							<a href="procurementPlanSelect?yearProcurementPlanYear=${list.yearProcurementPlanYear}&yearProcurementPlanId=${list.yearProcurementPlanId}" style="color:#000099">查看</a>
+							</c:if>
+							<c:if test="${(list.ifDecomposition)==0}">
+							<a href="procurementPlanYear?yearProcurementPlanId=${list.yearProcurementPlanId}" style="color:#000099">分解计划</a>
+							</c:if>
+						</td>
 					 </tr>
 				</c:forEach>
 			</tbody>	
     </table>
-				<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<tr>
 		  <td width="869">&nbsp;</td>
-		  <td width="63" align="right"><a href="#"><span class="left_ts">首页</span></a></td>
-		  <td width="63" align="right"><a href="#"><span class="left_ts">上一页</span></a></td>
-		  <td width="63" align="center"><span class="admin_toptxt">1/1</span></td>
-		  <td width="66" align="left"><a href="#"><span class="left_ts">下一页</span></a></td>
-		  <td width="63" align="left"><a href="#"><span class="left_ts">尾页</span></a></td>
+		   <td width="63" align="right"><a href="yearProcurementPlanPage?currPage=1"><span class="left_ts">首页</span></a></td>
+		  <td width="63" align="right"><a href="yearProcurementPlanPage?currPage=${currPage-1}"><span class="left_ts">上一页</span></a></td>
+		  <td width="63" align="center"><span class="admin_toptxt">${currPage }/${totalPage }</span></td>
+		  <td width="66" align="left"><a href="yearProcurementPlanPage?currPage=${currPage+1}"><span class="left_ts">下一页</span></a></td>
+		  <td width="63" align="left"><a href="yearProcurementPlanPage?currPage=${totalPage}"><span class="left_ts">尾页</span></a></td>
 		</tr>
 	</table>
 	</td>
@@ -122,11 +130,5 @@ body {
     <td valign="bottom" background="${pageContext.request.contextPath}/resources/images/mail_rightbg.gif"><img src="${pageContext.request.contextPath}/resources/images/buttom_right2.gif" width="16" height="17" /></td>
   </tr>
 </table>
-页面说明：<br />
-1.分解计划:如果该车型在创建全年计划后未进行分解，那么在页面显示的是分解计划，如果计划已经分解那么在页面显示的是查看。<br />
-2.在数据库“全年采购计划表（scm_yearProcurementPlan）”中，字段ifDecomposition 0表示未分解，1表示已分解。创建数据后默认是未分解，直到分解完毕后值变为0。<br />
-3.已采购是统计出来的信息表示2009年已经采购入库的车辆。<br />
-4.默认只计划只显示本年的计划。<br />
-5.点击修改后，计划数量变为文本框并且将原先的数字默认输入到文本框内，同事修改变为保存，当点击保存后需要做非空和有效性验证。
 </body>
 </html>

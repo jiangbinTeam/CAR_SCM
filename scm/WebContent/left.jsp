@@ -155,8 +155,8 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-          <li><a href="yearProcurementPlan" target="main">制定全年采购计划</a></li>
-          <li><a href="procurementManager/decompositionProcurementPlanSelect.html" target="main">全年采购计划分解</a></li>
+          <li><a href="yearProcurementPlanPage" target="main">制定全年采购计划</a></li>
+          <li><a href="procurementPlanPage" target="main">全年采购计划分解</a></li>
 		  <li><a href="procurementManager/carProcurementListMain.html" target="main">车辆采购单管理</a></li>
         </ul>
       </div>
