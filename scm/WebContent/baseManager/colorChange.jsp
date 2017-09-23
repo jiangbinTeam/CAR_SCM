@@ -99,13 +99,13 @@ body {
 			</tbody>						
    		</table>
 		<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
-			<tr>
+			 <tr>
 			  <td width="869">&nbsp;</td>
-			  <td width="63" align="right"><a href="#"><span class="left_ts">首页</span></a></td>
-			  <td width="63" align="right"><a href="#"><span class="left_ts">上一页</span></a></td>
-			  <td width="63" align="center"><span class="admin_toptxt">1/1</span></td>
-			  <td width="66" align="left"><a href="#"><span class="left_ts">下一页</span></a></td>
-			  <td width="63" align="left"><a href="#"><span class="left_ts">尾页</span></a></td>
+			  <td width="63" align="right"><a href="fyCol?currPage=1"><span class="left_ts">首页</span></a></td>
+			  <td width="63" align="right"><a href="fyCol?currPage=${currPage-1}"><span class="left_ts">上一页</span></a></td>
+			  <td width="63" align="center"><span class="admin_toptxt">${currPage }/${totalPage }</span></td>
+			  <td width="66" align="left"><a href="fyCol?currPage=${currPage+1}"><span class="left_ts">下一页</span></a></td>
+			  <td width="63" align="left"><a href="fyCol?currPage=${totalPage}"><span class="left_ts">尾页</span></a></td>
 			</tr>
 		</table>
 	</td>

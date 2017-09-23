@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  <mapper namespace="com.scm.dao.EmployeeMapper">
+   <resultMap id="scmdmployee-result" type="com.scm.pojo.Employee">
+       <id property="employeeId" column="employeeId"/>
+      <result property="employeeName" column="employeeName"/>
+      <result property="employeeTel" column="employeeTel"/>
+      <result property="employeeSex" column="employeeSex"/>
+      <result property="employeeBirthday" column="employeeBirthday"/>
+      <result property="employeePay" column="employeePay"/>
+      <result property="userName" column="username"/>
+      
+       <association property="users" javaType="com.scm.pojo.Users">
+  		<id property="userName" column="username"/>
+  		<result property="password" column="password"/>
+  		<result property="enabled" column="enabled"/>
+  		</association>
+   </resultMap>
+   <select id="list" resultMap="scmdmployee-result">
+    select employeeId,employeeName,employeeTel,employeeSex,employeeBirthday,employeePay,userName,c.userName,password,enabled from Scm_Employee c
+    left join users d on c.userName=d.userName
+	</select>
+	
+	<select id="findByScmEmployee" resultMap="scmdmployee-result">
+    select employeeId,employeeName,employeeTel,employeeSex,employeeBirthday,employeePay,userName,c.userName,password,enabled from Scm_Employee c
+    left join users d on c.userName=d.userName where employeeId=#{employeeId}
+	</select>
+	
+	
+  </mapper>

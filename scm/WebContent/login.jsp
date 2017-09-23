@@ -36,6 +36,7 @@ body {
 
 <script type="text/javascript">		
 	function change(){
+		
 		var time = new Date();
 		var timestamp = time.getSeconds();
 			$("#Verify").attr("src","${pageContext.request.contextPath}/imagecode.html?timestamp="+timestamp);			

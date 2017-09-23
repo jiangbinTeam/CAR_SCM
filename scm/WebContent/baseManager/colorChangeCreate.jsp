@@ -25,11 +25,10 @@ $(function(){  //文档加载
 	    $(this).removeClass("hover");   //鼠标离开移除hover样式 
 	  }
 	); 
-	
-	$("#selectType").click(function(){
-		
-		$("#choose").remove();
-		$.ajax({
+	 
+/* 	$("#selectType").click(function(){
+		$("#check").remove();
+		 $.ajax({
 			url:"selectType",
 			type:"get",
 			success:function(data){
@@ -40,8 +39,8 @@ $(function(){  //文档加载
 				 $("#selectType").append(op);
 				});
 			}
-		});
-	});
+		}); 
+	});  */
 }); 
 
 $(function(){
@@ -99,12 +98,21 @@ body {
 			<td width="26%" align="left">
 				<c:if test="${empty scmColorChange}">
 					<select id="selectType" name="typeDictionary.typeCode" class="sec2" style="width:250px">
-			          <option value="0" >请选择</option>		          		         	 	        
+			          <c:forEach items="${typeDictionarys}" var="type">
+						 <option value="${type.typeCode }">${type.brand }</option>	 
+					  </c:forEach>	          		         	 	        
 					</select>
 				</c:if>
 				<c:if test="${!empty scmColorChange}">
 					<select id="selectType" name="typeDictionary.typeCode" class="sec2" style="width:250px">
 			         <option value="${scmColorChange.typeDictionary.typeCode}">${scmColorChange.typeDictionary.brand}</option>
+						<c:forEach items="${typeDictionarys}" var="type">
+						
+							 <c:if test="${type.typeCode != scmColorChange.typeDictionary.typeCode}"> 
+								<option value="${type.typeCode }">${type.brand }</option>
+							 </c:if> 
+							 
+						</c:forEach>
 					</select>
 				</c:if>
 	        </td>

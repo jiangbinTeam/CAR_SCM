@@ -8,18 +8,18 @@ public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer employeeId;
-	private String username;
+	private String userName;
 	private String employeeName;
 	private String employeeTel;
 	private Integer employeeSex;
 	private Date employeeBirthday;
-	private Integer employeePay;
+	private Double employeePay;
 
-	public Employee(Integer employeeId, String username, String employeeName, String employeeTel,
-			Integer employeeSex, Date employeeBirthday, Integer employeePay) {
+	public Employee(Integer employeeId, String userName, String employeeName, String employeeTel,
+			Integer employeeSex, Date employeeBirthday, Double employeePay) {
 		super();
 		this.employeeId = employeeId;
-		this.username = username;
+		this.userName = userName;
 		this.employeeName = employeeName;
 		this.employeeTel = employeeTel;
 		this.employeeSex = employeeSex;
@@ -39,12 +39,12 @@ public class Employee implements Serializable {
 		this.employeeId = employeeId;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getEmployeeName() {
@@ -79,17 +79,17 @@ public class Employee implements Serializable {
 		this.employeeBirthday = employeeBirthday;
 	}
 
-	public Integer getEmployeePay() {
+	public Double getEmployeePay() {
 		return employeePay;
 	}
 
-	public void setEmployeePay(Integer employeePay) {
+	public void setEmployeePay(Double employeePay) {
 		this.employeePay = employeePay;
 	}
 
 	@Override
 	public String toString() {
-		return "Scm_Employee [employeeId=" + employeeId + ", username=" + username + ", employeeName=" + employeeName
+		return "Scm_Employee [employeeId=" + employeeId + ", username=" + userName + ", employeeName=" + employeeName
 				+ ", employeeTel=" + employeeTel + ", employeeSex=" + employeeSex + ", employeeBirthday="
 				+ employeeBirthday + ", employeePay=" + employeePay + "]";
 	}
