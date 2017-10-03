@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scm.dao.DealerOrderMapper">
+	<resultMap type="com.scm.pojo.DealerOrder" id="dealerOrder-result">
+		<id property="dealerOrderId" column="dealerOrderId" />
+		<result property="dealerId" column="dealerId" />
+		<result property="orderNumber" column="orderNumber" />
+		<result property="certificateDate" column="certificateDate" />
+
+		<association property="dealer" column="dealerId"
+			javaType="com.scm.pojo.Dealer" resultMap="dealer-result">
+		</association>
+	</resultMap>
+
+
+	<resultMap type="com.scm.pojo.Dealer" id="dealer-result">
+		<id property="dealerId" column="dealerId" />
+		<result property="dealerBalance" column="dealerBalance" />
+		<result property="dealerName" column="dealerName" />
+		<result property="storefrontAddress" column="storefrontAddress" />
+		<result property="storefrontName" column="storefrontName" />
+		<result property="dealerMobile" column="dealerMobile" />
+		<result property="dealerFaxes" column="dealerFaxes" />
+		<result property="portAddress" column="portAddress" />
+		<result property="principalName" column="principalName" />
+	</resultMap>
+
+	<sql id="pj1">
+		<if test="beginDate != null and endDate != null">
+			and DATE_FORMAT(certificateDate,'%Y-%m-%d')
+			BETWEEN
+			DATE_FORMAT(#{beginDate},'%Y-%m-%d') and
+			DATE_FORMAT(#{endDate},'%Y-%m-%d')
+		</if>
+		<if test="beginDate != null  and  endDate = null">
+			and DATE_FORMAT(certificateDate,'%Y-%m-%d') >=
+			DATE_FORMAT(#{beginDate},'%Y-%m-%d')
+		</if>
+		<if test=" beginDate = null and endDate != null">
+			and  <![CDATA[  DATE_FORMAT(certificateDate,'%Y-%m-%d')<= DATE_FORMAT(#{endDate},'%Y-%m-%d') ]]>
+		</if>
+		<if test="orderNumber !=null and orderNumber != ''">
+			and orderNumber= #{orderNumber}
+		</if>
+	</sql>
+	<select id="list" resultMap="dealerOrder-result">
+		select * from ( select ROWNUM rnn,tp.* from( select
+		c.DEALERORDERID,c.ORDERNUMBER,c.CERTIFICATEDATE,
+		d.* from
+		scm_dealerOrder c left outer join scm_dealer d on c.dealerId =
+		d.dealerId
+		where c.dealerId=#{dealerId}
+		<include refid="pj1"></include>
+		)tp
+		where   <![CDATA[ rownum<= #{pageMax} ]]>
+		) where rownum>=#{pageMin}
+
+	</select>
+
+	<select id="findById" resultMap="dealerOrder-result">
+		select c.*,d.* from
+		scm_dealerOrder c left outer join scm_dealer d on
+		c.dealerId =
+		d.dealerId
+		where c.dealerOrderId=#{dealerOrderId}
+	</select>
+
+	<select id="countDealerOrder" resultType="int">
+		select count(dealerOrderId) from scm_dealerOrder where
+		dealerId=#{dealerId}
+		<include refid="pj1"></include>
+	</select>
+
+
+	<select id="listAllDealerOrder" resultMap="dealerOrder-result">
+	 select c.DEALERORDERID,c.ORDERNUMBER,c.CERTIFICATEDATE,
+		d.* from scm_dealerOrder c left outer join scm_dealer d 
+        on c.dealerId =d.dealerId
+		<where>
+			1=1
+			<if test="dealerId!=null and dealerId!=''">
+				and c.DEALERID=#{dealerId}
+			</if>
+			<if test="orderNumber!=null and orderNumber!=''">
+				and orderNumber=#{orderNumber}
+			</if>
+			<if test="startDate!=null and startDate!=''">
+				and CERTIFICATEDATE>=to_date(#{startDate},'yyyy-mm-dd')
+			</if>
+			<if test="endDate!=null and endDate!=''">
+				<![CDATA[and CERTIFICATEDATE<=to_date(#{endDate},'yyyy-mm-dd')]]>
+			</if>
+		</where>
+	</select>
+
+
+	<select id="total" resultType="int">
+		select count(*) from( select
+		c.DEALERORDERID,c.ORDERNUMBER,c.CERTIFICATEDATE,
+		d.* from
+		scm_dealerOrder c left outer join scm_dealer d
+		on c.dealerId =d.dealerId)tp
+		<where>
+			1=1
+			<if test="dealerId!=null and dealerId!=''">
+			and DEALERID=#{dealerId}
+		</if>
+		<if test="orderNumber!=null and orderNumber!=''">
+			and orderNumber=#{orderNumber}
+		</if>
+		<if test="startDate!=null and startDate!=''">
+			and CERTIFICATEDATE>=to_date(#{startDate},'yyyy-mm-dd')
+		</if>
+		<if test="endDate!=null and endDate!=''">
+			<![CDATA[and CERTIFICATEDATE<=to_date(#{endDate},'yyyy-mm-dd')]]>
+		</if>
+		</where>
+	</select>
+
+</mapper>

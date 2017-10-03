@@ -26,5 +26,12 @@ public interface ColorChangeMapper {
 	ColorChange findByColorCode(String colorCode);//根据colorCode查询
 
 	@Select("select count(colorCode) from Scm_ColorChange")
-	int count();
+	int count(); 
+	
+	@Select("select * from Scm_ColorChange")
+	List<ColorChange> listAll();
+	
+	@Select("select * from Scm_ColorChange where typeCode=#{typeCode}")
+	List<ColorChange> findByTypeCode(@Param("typeCode")String typeCode);
+	
 }

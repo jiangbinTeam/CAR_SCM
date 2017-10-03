@@ -37,7 +37,8 @@ body {
 <body>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="17" valign="top" background="${pageContext.request.contextPath}/resources/images/mail_leftbg.gif"><img src="../images/left-top-right.gif" width="17" height="29" /></td>
+    <td width="17" valign="top" background="${pageContext.request.contextPath}/resources/images/mail_leftbg.gif">
+    	<img src="${pageContext.request.contextPath}/resources/images/left-top-right.gif" width="17" height="29" /></td>
     <td valign="top" background="${pageContext.request.contextPath}/resources/images/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
       <tr>
         <td height="31"><div class="titlebt">财务管理</div></td>
@@ -55,13 +56,13 @@ body {
 		<td>当前位置：财务管理>>经销商付车款>>添加付款记录</td>
 	</tr>
 	</table>
-	<form method="POST" enctype="multipart/form-data" id="form1" action="/scm/uploadExcel">
+	<form method="post" enctype="multipart/form-data" id="form1" action="/scm/uploadExcel">
 	     <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
             <tbody class="tbody2">
               <tr>
                 <td width="9%" align="left"><span>经销商付款</span></td>
                 <td width="91%" align="left">
-                  	<input type="file" name="upfile" id="upfile" class="file_2000" />
+                  	<input type="file" name="upfile" id="upfile" required="required" class="file_2000" />
                     <input name="button" type="submit" onclick="return checkData()" class="Submit" style="width:100px" value="导入"/>             
 				    <input name="button" type="button" class="Submit" style="width:100px" value="返回" onclick="javascript:history.back()"/>
 			    </td>

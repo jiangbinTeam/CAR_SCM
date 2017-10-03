@@ -11,8 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.scm.pojo.AuthorityInfo;
 import com.scm.pojo.Users;
+import com.scm.service.AuthorityInfoService;
 import com.scm.service.UsersService;
 import com.scm.util.MD5;
 
@@ -21,6 +24,9 @@ import com.scm.util.MD5;
 public class UsersController {
 	@Resource(name = "usersService")
 	private UsersService service;
+
+	@Resource(name = "authorityInfoService")
+	private AuthorityInfoService authorityInfoService;
 
 	// 登录验证
 	@RequestMapping("denglu")
@@ -44,6 +50,10 @@ public class UsersController {
 			password = MD5.getInstance().getMD5ofStr(password);// MD5加密
 			us = service.findUser(username, password);// 查询该用户是否存在及密码是否正确
 			if (us != null) {
+				String userName = us.getUserName();
+				AuthorityInfo authorityInfo = authorityInfoService.findByUserName(userName);
+
+				session.setAttribute("authorityInfo", authorityInfo);
 				session.setAttribute("user", us);
 				try {
 					response.sendRedirect("index.jsp");
@@ -58,6 +68,12 @@ public class UsersController {
 		return "login";
 	}
 
+	@RequestMapping("toLogin")
+	public ModelAndView toLogin() {
+		ModelAndView mv = new ModelAndView("login");
+		return mv;
+	}
+
 	// 退出操作
 	@RequestMapping(value = "quit", produces = "text/html;charset=utf-8")
 	public void quit(HttpServletRequest request, HttpServletResponse response) {
@@ -68,5 +84,32 @@ public class UsersController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	// 修改用户密码
+	@RequestMapping("modifyPwd")
+	public ModelAndView modifyPwd(HttpServletRequest request, String newpassword, String password) {
+		HttpSession session = request.getSession();
+		Users user = (Users) session.getAttribute("user");
+	
+		String userName = user.getUserName();
+		password = MD5.getInstance().getMD5ofStr(password);
+
+		ModelAndView mv = null;
+
+		if (!password.equals(user.getPassword())) {
+			mv = new ModelAndView("modifyPwd");
+			String error = "用户密码错误！";
+			mv.addObject("error", error);
+			mv.addObject("newpassword", newpassword);
+		} else {
+			mv = new ModelAndView("modifyPwd");
+
+			newpassword = MD5.getInstance().getMD5ofStr(newpassword);
+
+			service.UpdatePwd(newpassword, userName);
+			mv.addObject("success", "修改成功！");
+		}
+		return mv;
 	}
 }

@@ -29,7 +29,7 @@ public class ImportExcleUtil {
 	public static List<List<Object>> getBankListByExcel(InputStream in, String fileName) throws Exception {
 		List<List<Object>> list = null;
 
-		// 创建Excel工作薄
+		// 创建Excel工作薄	
 		Workbook work = getWorkbook(in, fileName);
 		if (null == work) {
 			throw new Exception("创建Excel工作薄为空！");
@@ -41,14 +41,13 @@ public class ImportExcleUtil {
 		list = new LinkedList<List<Object>>();
 		// 遍历Excel中所有的sheet
 		for (int i = 0; i < work.getNumberOfSheets(); i++) {
-			
 			sheet = work.getSheetAt(i);
 			if (sheet == null) {
 				continue;
 			}
 			
 			// 遍历当前sheet中的所有行
-			for (int j = sheet.getFirstRowNum() + 2; j < sheet.getPhysicalNumberOfRows(); j++) {
+			for (int j = sheet.getFirstRowNum() + 1; j < sheet.getPhysicalNumberOfRows(); j++) {
 				row = sheet.getRow(j);
 				if (row == null || row.getFirstCellNum() == j) {
 					continue;

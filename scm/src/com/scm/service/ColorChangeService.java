@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -22,7 +23,6 @@ public class ColorChangeService {
 	// 增添颜色转换信息
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, rollbackFor = Exception.class)
 	public int add(ColorChange colorChange) {
-		System.out.println(colorChange);
 		return colorChangeMapper.add(colorChange);
 	}
 
@@ -33,9 +33,11 @@ public class ColorChangeService {
 	}
 
 	// 列出所有颜色转换信息
-	/*
-	 * public List<ColorChange> list(){ return colorChangeMapper.list(); }
-	 */
+
+	public List<ColorChange> listAll() {
+		return colorChangeMapper.listAll();
+	}
+
 	// 列出所有颜色转换信息分页
 	public List<ColorChange> list(Integer pageMin, Integer pageMax) {
 		return colorChangeMapper.list(pageMin, pageMax);
@@ -51,4 +53,8 @@ public class ColorChangeService {
 		return colorChangeMapper.findByColorCode(colorCode);
 	}
 
+	//使用车型编码查询
+	public List<ColorChange> findByTypeCode(String typeCode) {
+		return colorChangeMapper.findByTypeCode(typeCode);
+	}
 }

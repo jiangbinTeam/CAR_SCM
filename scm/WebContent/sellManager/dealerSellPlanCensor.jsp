@@ -65,7 +65,7 @@
   </table>
 	<form action="listPage" method="get">
 	<input type="hidden" name="currPage" value="1">
-	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+	<table width="98%" border="0" align="center"  style="text-align: center;" cellpadding="0" cellspacing="0" class="line_table">
 		<tr>
 		<td width="7%" align="center" height="30"><span class="left_bt2">请选择年份</span></td>
 		<td width="9%">

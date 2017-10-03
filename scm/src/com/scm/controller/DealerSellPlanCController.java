@@ -102,6 +102,7 @@ public class DealerSellPlanCController {
 			int pageMax = currPage * pageSize;
 			dealerSellPlanCs = service.pageList(pageMin, pageMax, year, mouth, carType, dealerID);
 		}
+		
 		if (year == null || year.equals("")) {
 			year = "0";
 		}

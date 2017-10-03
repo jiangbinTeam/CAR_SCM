@@ -23,8 +23,8 @@ public class VinTest {
 	public void test() {
 		/*System.out.println(service.addPaymentListId(3, "1J4GA59128L544705"));*/
 		
-		for(Vin v:service.findByPListId(3)) {
-			System.out.println(v.getVinNumber());
+		for(Vin v:service.findAll()) {
+			System.out.println(v);
 		}
 	}
 

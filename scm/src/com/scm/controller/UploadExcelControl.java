@@ -28,8 +28,7 @@ public class UploadExcelControl {
 	 */
 	/*@RequestMapping(value="uploadExcel",method={RequestMethod.GET,RequestMethod.POST})*/
 	public  String  uploadExcel(HttpServletRequest request) throws Exception {
-		
-		System.out.println("提交开始！");
+System.out.println("开始！");		
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;  
 		
 		InputStream in =null;

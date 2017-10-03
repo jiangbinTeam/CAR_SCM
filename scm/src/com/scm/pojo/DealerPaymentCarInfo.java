@@ -9,13 +9,14 @@ public class DealerPaymentCarInfo {
 	private String colorName;// 颜色
 	private Double sellPrice;// 售价
 	private String info;// 说明信息
+	private Double addAccessorizeCharge;//加装费用
 
 	public DealerPaymentCarInfo() {
 		super();
 	}
 
 	public DealerPaymentCarInfo(String vinNumber, String brand, String engineCode, String colorName, Double sellPrice,
-			String info) {
+			String info, Double addAccessorizeCharge) {
 		super();
 		this.vinNumber = vinNumber;
 		this.brand = brand;
@@ -23,6 +24,15 @@ public class DealerPaymentCarInfo {
 		this.colorName = colorName;
 		this.sellPrice = sellPrice;
 		this.info = info;
+		this.addAccessorizeCharge = addAccessorizeCharge;
+	}
+
+	public Double getAddAccessorizeCharge() {
+		return addAccessorizeCharge;
+	}
+
+	public void setAddAccessorizeCharge(Double addAccessorizeCharge) {
+		this.addAccessorizeCharge = addAccessorizeCharge;
 	}
 
 	public String getVinNumber() {
@@ -76,7 +86,8 @@ public class DealerPaymentCarInfo {
 	@Override
 	public String toString() {
 		return "DealerPaymentCarInfo [vinNumber=" + vinNumber + ", brand=" + brand + ", engineCode=" + engineCode
-				+ ", colorName=" + colorName + ", sellPrice=" + sellPrice + ", info=" + info + "]";
+				+ ", colorName=" + colorName + ", sellPrice=" + sellPrice + ", info=" + info + ", addAccessorizeCharge="
+				+ addAccessorizeCharge + "]";
 	}
 
 }

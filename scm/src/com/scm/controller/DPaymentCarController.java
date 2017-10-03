@@ -134,8 +134,8 @@ public class DPaymentCarController {
 		}
 
 		in = file.getInputStream();
-		listob = ImportExcleUtil.getBankListByExcel(in, file.getOriginalFilename());
 
+		listob = ImportExcleUtil.getBankListByExcel(in, file.getOriginalFilename());
 		List<String> errorVin = new ArrayList<String>();
 		List<DealerPaymentCarInfo> errors = new ArrayList<DealerPaymentCarInfo>();
 

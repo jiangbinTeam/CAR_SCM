@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scm.dao.YearProcurementMapper">
+
+	<select id="pageList1" resultType="com.scm.pojo.YearProcurement">
+		select * from (select rownum
+		nb,e.* from (select y.*
+		,brand,carCharacter,carProcurementListCount
+		from
+		scm_yearProcurementPlan y
+		left join scm_typeDictionary d on
+		y.typecode=d.typecode left join
+		scm_carProcurementList c on
+		y.typecode=c.typecode
+		<where>
+			1=1
+			<if test="yearProcurementPlanYear!=null and yearProcurementPlanYear!''">
+				and yearProcurementPlanYear=#{yearProcurementPlanYear}
+			</if>
+		</where>
+		 order by
+		yearProcurementPlanId desc) e) t
+		where t.nb>=#{pageMin} and
+		<![CDATA[t.nb<=#{pageMax}]]>
+	</select>
+
+	<select id="countPage1" resultType="int">
+		select count(yearProcurementPlanId) from  (select y.* ,brand,carCharacter,carProcurementListCount from
+		scm_yearProcurementPlan y left join scm_typeDictionary d on y.typecode=d.typecode left join
+		 scm_carProcurementList c on y.typecode=c.typecode)
+		<where>
+			1=1
+			<if test="yearProcurementPlanYear!=null and yearProcurementPlanYear!''">
+				and yearProcurementPlanYear=#{yearProcurementPlanYear}
+			</if>
+		</where>
+	</select>
+
+</mapper>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.scm.dao.CarOutManagerMapper">
+  
+    <resultMap id="warehouse" type="com.scm.pojo.Warehouse">
+         <id property="warehouseId" column="warehouseId"/>
+      <result property="warehouseName" column="warehouseName"/>
+      <result property="warehouseAddress" column="warehouseAddress"/>
+      <result property="storageAreasName" column="storageAreasName"/>
+      <result property="vinNumber" column="vinNumber"/>
+      <result property="carCharacter" column="carCharacter"/>
+      <result property="typeCode" column="typeCode"/>
+    </resultMap>
+    
+ 		<select id="pageList" resultType="com.scm.pojo.Warehouse">
+		select * from (
+			select rownum rn,w.* from Dictionarymanagegc w 
+			<where>
+				 <![CDATA[rownum<=#{pageMax}]]>
+				<if test="warehouseId!=null and warehouseId!=''">
+					and warehouseId=#{warehouseId}
+				</if>
+				<if test="typeCode!=null and typeCode!=''">
+					and typeCode=#{typeCode}
+				</if>
+				<if test="vinNumber!=null and vinNumber!=''">
+					and vinNumber=#{vinNumber}
+				</if>
+			</where>
+		) where rn >=#{pageMin} 
+	</select>
+	
+	
+		<select id="totalcount" resultType="int">
+		Select count(*)  from Dictionarymanagegc 
+		<where> 
+			1=1
+				<if test="warehouseId!=null and warehouseId!=''">
+					and warehouseId=#{warehouseId}
+				</if>
+		
+		</where>
+	</select>
+	
+	
+	<select id="findBychuku" resultMap="warehouse" >
+	  select warehouseId,warehouseName,warehouseAddress,storageAreasId,storageAreasName,vinNumber,carCharacter,typeCode from Dictionarymanagegc
+	  <where>
+	    1=1
+	    <if test="warehouseId != null and warehouseId !=''">
+	     and warehouseId=#{warehouseId}
+	    </if>
+	    <if test="typeCode != null and typeCode !=''">
+	     and typeCode=#{typeCode}
+	    </if>
+	    <if test="vinNumber != null and vinNumber !=''">
+	     and vinNumber=#{vinNumber}
+	    </if>
+	    <if test="vinNumber != null and vinNumber !='' and typeCode != null and typeCode !='' and  warehouseId != null and warehouseId !=''">
+	     and vinNumber=#{vinNumber} and typeCode=#{typeCode}  and warehouseId=#{warehouseId} 
+	    </if>
+	    </where>
+	</select>
+	
+	</mapper>
