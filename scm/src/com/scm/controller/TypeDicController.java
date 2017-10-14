@@ -1,6 +1,5 @@
 package com.scm.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.scm.pojo.ColorChange;
 import com.scm.pojo.TypeDictionary;
 import com.scm.service.TypeDicService;
 
@@ -60,7 +58,7 @@ public class TypeDicController {
 	public ModelAndView tdyPage() {
 
 		int currPage = 1;
-		int pageSize = 5;// 页大小
+		int pageSize = 15;// 页大小
 		int ct = typeDicService.countTdy();// 总记录数
 		int pageAll = (int) Math.ceil(ct * 1.0 / pageSize);// 总页数
 		List<TypeDictionary> tdys = typeDicService.findByPageTdy(1, pageSize);// 首页记录
@@ -77,7 +75,7 @@ public class TypeDicController {
 	@RequestMapping("fyTdy")
 	public ModelAndView fyTdy(@RequestParam(value = "currPage", required = false) Integer currPage) {
 
-		int pageSize = 5;// 页大小
+		int pageSize = 15;// 页大小
 		int count = typeDicService.countTdy();// 总记录数
 		int pageAll = (int) Math.ceil(count * 1.0 / pageSize);// 计算总页数
 		List<TypeDictionary> tdys = null;// 当前页面数据

@@ -50,7 +50,7 @@
         <br>
         <br>
          <span class="left_txt">&nbsp;
-         	<img src="${pageContext.request.contextPath}/resources/images/ts.gif" width="16" height="16">开发团队介绍<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         	
          </span>
          <span class="left_txt"><br></span></td>
         <td width="7%">&nbsp;</td>
@@ -59,7 +59,7 @@
             <td width="7%" height="27" background="${pageContext.request.contextPath}/resources/images/news-title-bg.gif">
            		<img src="${pageContext.request.contextPath}/resources/images/news-title-bg.gif" width="2" height="27">
             </td>
-            <td width="93%" background="${pageContext.request.contextPath}/resources/images/news-title-bg.gif" class="left_bt2">系统介绍</td>
+            <td width="93%" background="${pageContext.request.contextPath}/resources/images/news-title-bg.gif" class="left_bt2"></td>
           </tr>
           <tr>
             <td height="102" valign="top">&nbsp;</td>
@@ -102,7 +102,7 @@
 	            <td width="7%" height="27" background="${pageContext.request.contextPath}/resources/images/news-title-bg.gif">
 	            	<img src="${pageContext.request.contextPath}/resources/images/news-title-bg.gif" width="2" height="27">
 	            </td>
-	            <td width="93%" background="${pageContext.request.contextPath}/resources/images/news-title-bg.gif" class="left_bt2">模块划分</td>
+	            <td width="93%" background="${pageContext.request.contextPath}/resources/images/news-title-bg.gif" class="left_bt2"></td>
 	          </tr>
 	          <tr>
 	            <td height="102" valign="top">&nbsp;</td>

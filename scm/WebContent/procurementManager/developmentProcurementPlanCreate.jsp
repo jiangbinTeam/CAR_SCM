@@ -79,11 +79,12 @@ body {
 		<th width="16%">品牌</th>
 		<th width="16%">车型编码</th>	
 		<th width="19%">车型特征</th>	
-		<th width="15%">当前库存</th>	
-		<th width="18%">计划数量</th>	
+		<th width="15%">当前库存</th>	 
+		<th width="18%">计划数量</th>
+		<th>操作</th>	
 		</tr>
 		</thead>
-		<tbody class="tbody">
+		<tbody class="tbody" align="center" >
 			<c:forEach items="${ypp}" var="add" varStatus="i">
 				<form action="yearProcurementPlanCreate" method="post">
 				<%-- <c:if test="${empty add.yearProcurementPlanCount}"> --%>
@@ -99,7 +100,9 @@ body {
 						</td>
 						<td>${add.carCharacter}</td>
 						<td><a style="color:#CC0000">${add.carProcurementListCount}</a></td>
-						<td><input name="yearProcurementPlanCount" required="required"  type="text"  onkeyup="this.value=this.value.replace(/[^\d]/g,'');"></td> <!-- 不能为空 只能输入数字 -->
+						<td>
+							<input name="yearProcurementPlanCount" style="width:50px;" required="required"  type="text"  onkeyup="this.value=this.value.replace(/[^\d]/g,'');">
+						</td> <!-- 不能为空 只能输入数字 -->
 						<!-- <input type="hidden" name="ifDecomposition" value="0"> -->
 						<td width="100%" align="center"><button type="submit" class="Submit"  style="width:100px">保存采购计划</button></td>
 					 </tr>

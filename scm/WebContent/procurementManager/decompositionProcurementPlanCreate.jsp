@@ -59,17 +59,22 @@ body {
 		<img src="${pageContext.request.contextPath}/resources/images/icon-login-seaver.gif" width="16" height="16" />
 		</td>
 		<td>
-		当前位置：采购管理>>全年采购计划分解>>全年分解采购计划
+		当前位置：采购管理>>全年采购计划分解>>制定全年分解采购计划
 		</td>
 
 	</tr>
 	</table>
-	<form action="procurementPlanAdd" method="post">
+	<form action="procurementPlanAdd" method="post"  onsubmit="return check()">
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<tr>
 		
 		<td width="9%"><span class="left_bt2">全年计划总量</span></td>
-		<td width="32%"><span class="left_txt">${ypp.yearProcurementPlanCount}</span></td>
+		<td width="32%">
+			<span class="left_txt" id="carSum">${ypp.yearProcurementPlanCount}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<span>待分配数量：</span>
+			<input type="text" readonly="readonly" style="width: 30px;text-align: center; border: none; color: red"
+			 value="${ypp.yearProcurementPlanCount}" id="total">
+		</td>
 		<td width="59%">
 		<input type="submit" class="Submit" value="保存" style="width:100px"/>
 		<input type="button" class="Submit" value="返回" style="width:100px" onclick="javascript:history.back()"/>
@@ -88,7 +93,7 @@ body {
 		<th width="22%">计划数量</th>	
 		</tr>
 		</thead>
-		<tbody class="tbody">
+		<tbody class="tbody" align="center" >
 				<c:forEach begin="0" end="11" varStatus="i">
 					 <tr>
 					 	<input type="hidden" name="ppa[${i.index}].yearProcurementPlanId" value="${ypp.yearProcurementPlanId}">
@@ -97,11 +102,40 @@ body {
 						<td>${ypp.typeCode}</td>
 						<td>${ypp.yearProcurementPlanYear}</td>
 						<td>${i.index+1}<input type="hidden" name="ppa[${i.index}].procurementPlanAnalyzeMonth" value="${i.index+1}"></td>
-						<td><input name="ppa[${i.index}].procurementPlanAnalyzeCount" required="required"  type="text"  onkeyup="this.value=this.value.replace(/[^\d]/g,'');"></td> <!-- 不能为空 只能输入数字 -->
+						<td><input name="ppa[${i.index}].procurementPlanAnalyzeCount" required="required"  style="width: 40px;text-align: center;"
+						    class="planNumber" value="0" type="text"  onkeyup="this.value=this.value.replace(/[^\d]/g,'');"></td> <!-- 不能为空 只能输入数字 -->
 					 </tr>
 				</c:forEach>
 		</tbody>			
     </table>
+    <script type="text/javascript">
+	     $(function(){
+			 var total=document.getElementById("carSum").innerHTML;
+			 total=parseInt(total);
+		
+			$(".planNumber").change(function(){
+				var sum=0;
+				var n=document.getElementsByClassName("planNumber");
+				$.each(n,function(key,value){
+
+					sum+=parseInt(value.value);
+				
+				});
+			document.getElementById("total").value=(total-sum);
+			});
+		  
+		});
+		
+		function check(){
+			var total=document.getElementById("total").value;
+			 if(total!='0'){
+				 alert("分配总数与计划数量不符！");
+				 return false;
+			 }else{
+				 return true;
+			 }
+		}
+    </script>
     </form>	
 	</td>
     <td background="${pageContext.request.contextPath}/images/mail_rightbg.gif">&nbsp;</td>

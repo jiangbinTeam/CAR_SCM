@@ -26,7 +26,7 @@ public class ScmEmployeeContorller {
 	@RequestMapping("ScmEmployeelist")
 	public ModelAndView list() {
 		Integer currPage = 1;
-		int pageSize = 5;// 页大小
+		int pageSize = 15;// 页大小
 		int total = employeeService.total();// 总记录数
 		int pageAll = (int) Math.ceil(total * 1.0 / pageSize);// 总页数
 		
@@ -44,7 +44,7 @@ public class ScmEmployeeContorller {
 	@RequestMapping("listByPage")
 	public ModelAndView fyCol(@RequestParam(value = "currPage", required = false) Integer currPage) {
 		
-		int pageSize = 5;// 页大小
+		int pageSize = 15;// 页大小
 		int total = employeeService.total();// 总记录数
 		int pageAll = (int) Math.ceil(total * 1.0 / pageSize);// 总页数
 		List<Employee> emp = null;// 当前页面数据

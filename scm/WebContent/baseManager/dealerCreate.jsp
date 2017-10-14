@@ -69,7 +69,7 @@ body {
 		<td width="20">
 		<img src="${pageContext.request.contextPath}/resources/images/icon-login-seaver.gif" width="16" height="16" />		</td>
 		<td>
-		当前位置：基础资料>>经销商管理>>经销商管理维护(dealerCreate.html)</td>
+		当前位置：基础资料>>经销商管理>>经销商管理维护</td>
 	</tr>
 	</table>
 	<form action="ScmDealersave" method="post" >
@@ -173,7 +173,6 @@ body {
     <img src="${pageContext.request.contextPath}/resources/images/buttom_right2.gif" width="16" height="17" /></td>
   </tr>
 </table>
-<p>页面要求：<br />
-1.这是添加界面和修改界面。<br />
+
 </body>
 </html>

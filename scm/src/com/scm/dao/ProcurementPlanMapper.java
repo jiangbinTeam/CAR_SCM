@@ -14,6 +14,18 @@ import com.scm.pojo.YearProcurementPlan;
 
 @Repository("procurementPlanMapper")
 public interface ProcurementPlanMapper {
+	
+	
+	List<YearProcurement> findAll(@Param("pageMin") Integer pageMin, 
+			 @Param("pageMax") Integer pageMax,
+			 @Param("yearProcurementPlanyear") Integer yearProcurementPlanyear,
+			 @Param("typeCode") String typeCode);
+	
+	int  total(@Param("yearProcurementPlanyear") Integer yearProcurementPlanyear,
+			 @Param("typeCode") String typeCode);
+	
+	@Select("select distinct yearProcurementPlanYear from scm_yearProcurementPlan")
+	Integer[]  findAllYear();
 
 	//创建全年分解采购计划
 	@Insert("insert into scm_procurementPlanAnalyze(yearProcurementPlanId,procurementPlanAnalyzeMonth,procurementPlanAnalyzeCount)"
@@ -58,3 +70,7 @@ public interface ProcurementPlanMapper {
 	@Select("select count(procurementPlanAnalyzeId) from  (select * from scm_procurementPlanAnalyze )")
 	int countPage();
 }
+
+
+
+

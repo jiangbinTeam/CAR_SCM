@@ -12,6 +12,7 @@
 <link href="${pageContext.request.contextPath}/resources/images/fox.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" language="JavaScript">
 $(function(){  //文档加载 
 $(".tbody tr").hover( 
@@ -26,6 +27,49 @@ $(".tbody tr").hover(
 }); 
 
 </script> 
+<script type="text/javascript">
+$().ready(function(){
+	$("#selectYear").click(function(){ //click() 点击事件
+		var slv = $("#selectYear").val(); // .val 返回第一个匹配元素的 value 属性的值
+		$("#selectYear").empty();
+		$.ajax({
+			url:"selectYear", //请求的地址
+			type:"get", //请求方式为get
+			success:function(data){ //success指的是请求并成功返回信息 data返回的内容
+				var type =eval("(" + data + ")"); //转换为json对象 
+				/* $("#selectYear").empty();  */// empty() 删除匹配的元素集合中所有的子节点。
+				$.each(type,function(key,value){	// each() 循环 //遍历处理data(type)
+				var op="<option value="+value.yearProcurementPlanYear+">"+value.yearProcurementPlanYear+"</option>";
+				 $("#selectYear").append(op); // .append 向每个匹配的元素内部追加内容。
+				 $("#selectYear").val(slv); //.val(slv) 设置 Value 属性的值
+				});
+			}
+		});
+	});
+	$("#selectYear").change(
+				function() {
+					var params = $("#selectYear").val();
+					$.ajax( {
+						type : "post",
+						url : "selectType",
+						data : "yearProcurementPlanYear=" + params,
+						cache : false,
+						dataType : "json",
+						success : function(json) {
+							var str = "<option>请选择</option>";
+							$("#city").html("");
+							for ( var i = 0; i < json.length; i++) {
+								str += "<option value='" + json[i].typeCode+ "'>" + json[i].brand+ json[i].typeCode+"</option>";
+							}
+							$("#city").append(str);
+						},
+						error : function() {
+							alert("请与管理员联系");
+						}
+				});
+			});
+})
+</script>
 <style type="text/css"> 
 .hover{background-color:#CACACA;}  /*这里是鼠标经过时的颜色*/ 
 
@@ -70,43 +114,62 @@ body {
 	</tr>
 	</table>
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+		<form action="procurementPlanSelect" method="post">
 		<tr>
-		
-		<td width="10%" align="center" height="30"><span class="left_bt2">请选择年份</span></td>
-		<td width="9%"><select name="projectname" class="sec2" style="width:100px">
-		<option value="0" selected="selected">请选择</option>
-	  	<option value="2009">2009</option>
-		<option value="2010">2010</option>
-		<option value="2011">2011</option>
-		<option value="2012">2012</option>
-		<option value="2013">2013</option>
-		<option value="2014">2014</option>
-		<option value="2015">2015</option>
-		<option value="2016">2016</option>
-		<option value="2017">2017</option>
-		<option value="2018">2018</option>
-		<option value="2019">2019</option>
-		<option value="2020">2020</option>
-	  </select></td>
-		<td width="7%" align="left"><span class="left_bt2">请选择车型</span></td>
-		<td width="22%"><select name="select" class="sec2" style="width:250px">
-		  <option value="0" selected="selected">请选择</option>
-          <option value="2009">大切诺基BJ2021V8(4.7 自动 四驱)</option>
-          <option value="2010">大切诺基BJ2021V8(4.7 自动 四驱)</option>
-          <option value="2011">大切诺基BJ2021V8(4.7 自动 四驱)</option>
-          <option value="2012">大切诺基BJ2021V8(4.7 自动 四驱)</option>
-          <option value="2013">大切诺基BJ2021V8(4.7 自动 四驱)</option>
-          <option value="2014">大切诺基BJ2021V8(4.7 自动 四驱)</option>
-          <option value="2015">大切诺基BJ2021V8(4.7 自动 四驱)</option>
-          <option value="2016">大切诺基BJ2021V8(4.7 自动 四驱)</option>
-          <option value="2017">大切诺基BJ2021V8(4.7 自动 四驱)</option>
-          <option value="2018">大切诺基BJ2021V8(4.7 自动 四驱)</option>
-          <option value="2019">大切诺基BJ2021V8(4.7 自动 四驱)</option>
-          <option value="2020">大切诺基BJ2021V8(4.7 自动 四驱)</option>
-        </select></td>
-		  
-		  <td width="52%"><input type="button" class="Submit" value="查看" style="width:100px"/></td>
-	</tr>
+			<td width="8%" align="center" height="30"><span class="left_bt2">请选择年份：</span></td>
+			<td width="8%" align="left">
+				<select  name="yearProcurementPlanYear"  class="sec2" style="width:100px">
+					<c:if test="${!empty yearProcurementPlanYear}">
+						
+					    <c:forEach items="${years}" var="y">
+							 <c:if test="${y.yearProcurementPlanYear==yearProcurementPlanYear}">  
+								<option value="${yearProcurementPlanYear}">${yearProcurementPlanYear}年</option>
+							 </c:if> 
+						</c:forEach>
+						
+						 <c:forEach items="${years}" var="y">
+							<c:if test="${y.yearProcurementPlanYear!=yearProcurementPlanYear}">
+								<option value="${y.yearProcurementPlanYear}">${y.yearProcurementPlanYear}年</option>
+							</c:if>
+						</c:forEach> 
+						<option value="0" >请选择</option>
+					</c:if>
+					<c:if test="${empty yearProcurementPlanYear}">
+						<option value="0" >请选择</option>
+						<c:forEach items="${years}" var="y">
+								<option value="${y.yearProcurementPlanYear}">${y.yearProcurementPlanYear}年</option>
+						</c:forEach>
+					</c:if> 
+				</select>
+	    	</td>
+			<td width="8%" align="center"><span class="left_bt2">请选择车型：</span></td>
+			<td width="22%" align="left">
+        		 <select  name="typeCode"  class="sec2" style="width:200px">
+        		 	<c:if test="${!empty typeCode}">
+						<c:forEach items="${typeDictionarys}" var="t">
+							<c:if test="${t.typeCode==typeCode}">
+								<option value="${t.typeCode}">${t.brand}</option>
+							</c:if>
+						</c:forEach>
+						
+						<c:forEach items="${typeDictionarys}" var="t">
+							<c:if test="${t.typeCode!=typeCode}">
+								<option value="${t.typeCode}">${t.brand}</option>
+							</c:if>
+						</c:forEach> 
+						<option value="0" >请选择</option>
+					</c:if>
+					<c:if test="${empty typeCode}">
+						<option value="0" >请选择</option>
+						 <c:forEach items="${typeDictionarys}" var="t">
+								<option value="${t.typeCode}">${t.brand}</option>
+						</c:forEach> 
+					</c:if>
+        	 	</select>
+        	 </td> 
+		  	<td width="52%"><input type="submit" class="Submit" value="查看" style="width:100px"/></td>
+		</tr>
+		</form>
 	</table>
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<thead class="thead">
@@ -121,8 +184,12 @@ body {
 		<th>操作</th>
 		</tr>
 		</thead>
-		<tbody class="tbody">
-		<c:forEach items="${list}" var="car" varStatus="i">
+		<tbody class="tbody" align="center" >
+		<c:if test="${empty yp}">
+			<tr><td colspan="8">该车型的年采购计划未分解</td></tr>
+		</c:if>
+		<c:if test="${!empty yp}">
+		<c:forEach items="${yp}" var="car" varStatus="i">
 		 <tr>
 			<td>${i.index+1}</td>
 			<td>${car.brand}</td>
@@ -131,23 +198,33 @@ body {
 			<td>${car.procurementPlanAnalyzeMonth}</td>
 			<td>${car.procurementPlanAnalyzeCount}</td>
 			<td><a style="color:#CC0000">${car.carProcurementListCount}</a></td>	
-			<td><a href="procurementPlanupdates?yearProcurementPlanYear=${car.yearProcurementPlanYear}&yearProcurementPlanId=${car.yearProcurementPlanId}" style="color:#000099">修改</a></td>
+			<td><a href="procurementPlanupdates?yearProcurementPlanYear=${car.yearProcurementPlanYear}&yearProcurementPlanId=${car.yearProcurementPlanId}"
+				 style="color:#000099">修改</a></td>
 		 </tr>
 		 </c:forEach>
+		 </c:if>
 		</tbody>						
     </table>
-    <c:if test="${!empty currPage}">
+   
     <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<tr>
 		  <td width="869">&nbsp;</td>
-		   <td width="63" align="right"><a href="procurementPlanPage?currPage=1"><span class="left_ts">首页</span></a></td>
-		  <td width="63" align="right"><a href="procurementPlanPage?currPage=${currPage-1}"><span class="left_ts">上一页</span></a></td>
+		   <td width="63" align="right">
+		   	<a href="findProcurementPlanBypage?currPage=1&yearProcurementPlanYear=${yearProcurementPlanYear}&typeCode=${typeCode}">
+		   	<span class="left_ts">首页</span></a></td>
+		  <td width="63" align="right">
+		  <a href="findProcurementPlanBypage?currPage=${currPage-1}&yearProcurementPlanYear=${yearProcurementPlanYear}&typeCode=${typeCode}">
+		  <span class="left_ts">上一页</span></a></td>
 		  <td width="63" align="center"><span class="admin_toptxt">${currPage }/${totalPage }</span></td>
-		  <td width="66" align="left"><a href="procurementPlanPage?currPage=${currPage+1}"><span class="left_ts">下一页</span></a></td>
-		  <td width="63" align="left"><a href="procurementPlanPage?currPage=${totalPage}"><span class="left_ts">尾页</span></a></td>
+		  <td width="66" align="left">
+		  <a href="findProcurementPlanBypage?currPage=${currPage+1}&yearProcurementPlanYear=${yearProcurementPlanYear}&typeCode=${typeCode}">
+		  <span class="left_ts">下一页</span></a></td>
+		  <td width="63" align="left">
+		  <a href="findProcurementPlanBypage?currPage=${totalPage}&yearProcurementPlanYear=${yearProcurementPlanYear}&typeCode=${typeCode}">
+		  <span class="left_ts">尾页</span></a></td>
 		</tr>
 	</table>
-	</c:if>
+
 	</td>
     <td background="${pageContext.request.contextPath}/resources/images/mail_rightbg.gif">&nbsp;</td>
   </tr>

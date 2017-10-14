@@ -53,7 +53,7 @@ public class ScmLogisticsController {
 	public ModelAndView logistics() {
 		
 		Integer currPage = 1;
-		int pageSize = 5;
+		int pageSize = 15;
 
 		int total = logisticsService.count();// 计算总记录数
 		int pageAll = (int) Math.ceil(total * 1.0 / pageSize);// 计算总页数
@@ -71,7 +71,7 @@ public class ScmLogisticsController {
 	@RequestMapping("fyLog")
 	public ModelAndView fyLog(@RequestParam(value = "currPage", required = false) Integer currPage) {
 
-		int pageSize = 5;// 页大小
+		int pageSize = 15;// 页大小
 		int count = logisticsService.count();// 总记录数
 		int pageAll = (int) Math.ceil(count * 1.0 / pageSize);// 计算总页数
 		List<Logistics> logisticsList = null;// 当前页面数据

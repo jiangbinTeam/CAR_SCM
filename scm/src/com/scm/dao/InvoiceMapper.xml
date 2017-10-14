@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scm.dao.InvoiceMapper">
+	<resultMap type="com.scm.pojo.Invoice2" id="Invoice2-result">
+		<id property="invoiceId" column="invoiceId"/>
+  		<result property="logisticsName" column="logisticsName"/>
+  		<result property="logisticsId" column="logisticsId"/>
+  		<result property="dealerId" column="dealerId"/>
+  		<result property="carriageCharge" column="carriageCharge"/>
+  		<result property="startDate" column="startDate"/>
+  		<result property="accessCarDate" column="accessCarDate"/>
+  		<result property="invoiceNumber" column="invoiceNumber"/>
+  		<result property="dealerName" column="dealerName"/>
+  		<result property="principalName" column="principalName"/>		 		
+	</resultMap>
+<sql id="pj1">
+<if test="dealerId !=null and dealerId !=''">
+and dealerId=#{dealerId}
+</if>
+<if test="startDate !=null  and accessCarDate !=null ">
+and startDate is not null and accessCarDate is not null
+</if>
+<if test="startDate !=null  and accessCarDate ==null  ">
+and startDate is not null and accessCarDate is null 
+</if>
+<if test="startDate ==null  and accessCarDate ==null  ">
+and startDate is null and accessCarDate is null
+</if>
+</sql>	
+
+<select id="findInvoice" resultMap="Invoice2-result">
+
+select * from (select rownum rnn,sgs.logisticsname,ts.* from  scm_logistics sgs right join
+(select sve.*,sle.dealername,sle.principalname from scm_invoice sve 
+left join scm_dealer sle on sve.dealerid = sle.dealerid) ts  on ts.logisticsid =sgs.logisticsid
+ where 1=1 
+ <include refid="pj1"></include>
+ and <![CDATA[ rownum<= #{pageMax} ]]> ) where rnn >=#{pageMin}
+
+</select>	
+
+<select id="countIod" resultType="int">
+select count(invoiceId) from scm_invoice where 1=1 
+ <include refid="pj1"></include>
+
+</select>	
+	</mapper>

@@ -1,6 +1,10 @@
 package com.scm.pojo;
 
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.io.Serializable;
+
+import javax.print.attribute.standard.MediaName;
 
 //颜色转换表
 public class ColorChange implements Serializable {
@@ -8,6 +12,7 @@ public class ColorChange implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private TypeDictionary typeDictionary;
+	private String typeCode;
 	private String colorName;
 	private String colorCode;
 
@@ -15,11 +20,20 @@ public class ColorChange implements Serializable {
 
 	}
 
-	public ColorChange(TypeDictionary typeDictionary, String colorName, String colorCode) {
+	public ColorChange(TypeDictionary typeDictionary, String typeCode, String colorName, String colorCode) {
 		super();
 		this.typeDictionary = typeDictionary;
+		this.typeCode = typeCode;
 		this.colorName = colorName;
 		this.colorCode = colorCode;
+	}
+
+	public String getTypeCode() {
+		return typeCode;
+	}
+
+	public void setTypeCode(String typeCode) {
+		this.typeCode = typeCode;
 	}
 
 	public TypeDictionary getTypeDictionary() {
@@ -48,8 +62,8 @@ public class ColorChange implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ScmColorChange [typeDictionary=" + typeDictionary + ", colorName=" + colorName + ", colorCode="
-				+ colorCode + "]";
+		return "ColorChange [typeDictionary=" + typeDictionary + ", typeCode=" + typeCode + ", colorName=" + colorName
+				+ ", colorCode=" + colorCode + "]";
 	}
 
 }

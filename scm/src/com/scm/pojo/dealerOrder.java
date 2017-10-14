@@ -3,63 +3,71 @@ package com.scm.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
-public class dealerOrder implements Serializable {
-  private static final long serialVersionUID = 5102556800790895605L;
+import org.springframework.format.annotation.DateTimeFormat;
 
-  /*28.经销商订单表（scm_dealerOrder）
-    经销商订单ID	dealerOrderId
-   经销商表主键	dealerId
-   订单编号	orderNumber
-  下单日期	certificateDate*/
+public class DealerOrder implements Serializable {
 
-  private Integer dealerOrderId;
-  private Integer dealerId;
-  private String orderNumber;
-  private Date certificateDate;
+	private static final long serialVersionUID = 1L;
+	/*
+	 * 28.经销商订单表（scm_dealerOrder） 经销商订单ID dealerOrderId 经销商表主键 dealerId 订单编号
+	 * orderNumber 下单日期 certificateDate
+	 */
 
-  public dealerOrder() {
-    super();
-  }
+	private Integer dealerOrderId;
+	private Integer dealerId;
+	private String orderNumber;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date certificateDate;
+	private Dealer dealer = new Dealer();
 
-  public Integer getDealerOrderId() {
-    return dealerOrderId;
-  }
+	public Dealer getDealer() {
+		return dealer;
+	}
 
-  public void setDealerOrderId(Integer dealerOrderId) {
-    this.dealerOrderId = dealerOrderId;
-  }
+	public void setDealer(Dealer dealer) {
+		this.dealer = dealer;
+	}
 
-  public Integer getDealerId() {
-    return dealerId;
-  }
+	public DealerOrder() {
+		super();
+	}
 
-  public void setDealerId(Integer dealerId) {
-    this.dealerId = dealerId;
-  }
+	public Integer getDealerOrderId() {
+		return dealerOrderId;
+	}
 
-  public String getOrderNumber() {
-    return orderNumber;
-  }
+	public void setDealerOrderId(Integer dealerOrderId) {
+		this.dealerOrderId = dealerOrderId;
+	}
 
-  public void setOrderNumber(String orderNumber) {
-    this.orderNumber = orderNumber;
-  }
+	public Integer getDealerId() {
+		return dealerId;
+	}
 
-  public Date getCertificateDate() {
-    return certificateDate;
-  }
+	public void setDealerId(Integer dealerId) {
+		this.dealerId = dealerId;
+	}
 
-  public void setCertificateDate(Date certificateDate) {
-    this.certificateDate = certificateDate;
-  }
+	public String getOrderNumber() {
+		return orderNumber;
+	}
 
-  @Override
-  public String toString() {
-    return "dealerOrder{" +
-            "dealerOrderId=" + dealerOrderId +
-            ", dealerId=" + dealerId +
-            ", orderNumber='" + orderNumber + '\'' +
-            ", certificateDate=" + certificateDate +
-            '}';
-  }
+	public void setOrderNumber(String orderNumber) {
+		this.orderNumber = orderNumber;
+	}
+
+	public Date getCertificateDate() {
+		return certificateDate;
+	}
+
+	public void setCertificateDate(Date certificateDate) {
+		this.certificateDate = certificateDate;
+	}
+
+	@Override
+	public String toString() {
+		return "dealerOrder{" + "dealerOrderId=" + dealerOrderId + ", dealerId=" + dealerId + ", orderNumber='"
+				+ orderNumber + '\'' + ", certificateDate=" + certificateDate + '}';
+	}
+
 }

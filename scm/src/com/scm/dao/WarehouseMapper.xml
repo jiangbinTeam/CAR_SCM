@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.scm.dao.WarehouseMapper">
+  
+    <resultMap id="warehouse" type="com.scm.pojo.Warehouse">
+         <id property="warehouseId" column="warehouseId"/>
+      <result property="warehouseName" column="warehouseName"/>
+      <result property="warehouseAddress" column="warehouseAddress"/>
+      <result property="storageAreasName" column="storageAreasName"/>
+      <result property="vinNumber" column="vinNumber"/>
+      <result property="vinnumbercount" column="vinnumbercount"/>
+    </resultMap>
+       
+       
+       
+     	
+	
+		<select id="pageList" resultType="com.scm.pojo.Warehouse">
+		select * from (
+			select rownum rn,w.* from warehousekuweiidc w
+			<where>
+				 <![CDATA[rownum<=#{pageMax}]]>
+				<if test="warehouseId!=null and warehouseId!=''">
+					and warehouseId=#{warehouseId}
+				</if>
+	
+			</where>
+		) where rn >=#{pageMin} 
+	</select>
+	
+	<select id="totalcount" resultType="int">
+		Select count(*)  from warehousekuweiidc
+		<where> 
+			1=1
+				<if test="warehouseId!=null and warehouseId!=''">
+					and warehouseId=#{warehouseId}
+				</if>
+		
+		</where>
+	</select>
+	
+	
+    
+  </mapper>

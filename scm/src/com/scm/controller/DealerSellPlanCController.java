@@ -71,10 +71,10 @@ public class DealerSellPlanCController {
 		if (mouth.equals("0") || mouth.equals("")) {
 			mouth = null;
 		}
-		if (carType.equals("0") || carType.equals("")||carType==null) {
+		if (carType.equals("0") || carType.equals("")) {
 			carType = null;
 		}
-		if (dealerID == 0 || carType.equals("")) {
+		if (dealerID == 0 || dealerID.equals("")) {
 			dealerID = null;
 		}
 
@@ -102,7 +102,7 @@ public class DealerSellPlanCController {
 			int pageMax = currPage * pageSize;
 			dealerSellPlanCs = service.pageList(pageMin, pageMax, year, mouth, carType, dealerID);
 		}
-
+		
 		if (year == null || year.equals("")) {
 			year = "0";
 		}

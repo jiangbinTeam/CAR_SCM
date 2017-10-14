@@ -61,7 +61,7 @@ body {
 		<img src="${pageContext.request.contextPath}/resources/images/icon-login-seaver.gif" width="16" height="16" />
 		</td>
 		<td>
-		当前位置：采购管理>>制定全年采购计划>>创建全年采购计划
+		当前位置：采购管理>>制定全年采购计划>>修改全年采购计划
 		</td>
 
 	</tr>
@@ -87,20 +87,18 @@ body {
 		<th width="18%">计划数量</th>	
 		</tr>
 		</thead>
-		<tbody class="tbody">
+		<tbody class="tbody" align="center" >
 				<%-- <c:if test="${empty add.yearProcurementPlanCount}"> --%>
 					 <tr>
 						<td>1</td>
 						<input type="hidden" name="yearProcurementPlanId" value="${ypp.yearProcurementPlanId}">
-						<td><input type="text" name="yearProcurementPlanYear" value="${ypp.yearProcurementPlanYear}" required="required"></td>
+						<td>${ypp.yearProcurementPlanYear}</td>
 						<td>${ypp.brand}</td>
-						<td>${ypp.typeCode}
-						<input type="hidden" name="typeCode" value="${ypp.typeCode}">
-						</td>
+						<td>${ypp.typeCode}</td>
 						<td>${ypp.carCharacter}</td>
 						<td><a style="color:#CC0000">${ypp.carProcurementListCount}</a></td>
-						<td><input name="yearProcurementPlanCount" value="${ypp.yearProcurementPlanCount}"  required="required"  type="text"  onkeyup="this.value=this.value.replace(/[^\d]/g,'');"></td> <!-- 不能为空 只能输入数字 -->
-						<!-- <input type="hidden" name="ifDecomposition" value="0"> -->
+						<td><input name="yearProcurementPlanCount" value="${ypp.yearProcurementPlanCount}"  required="required" 
+						      style="width: 40px;text-align: center;" type="text"  onkeyup="this.value=this.value.replace(/[^\d]/g,'');"></td> <!-- 不能为空 只能输入数字 -->
 					 </tr>
 					<%-- </c:if> --%>
 			</tbody>

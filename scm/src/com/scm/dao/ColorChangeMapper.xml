@@ -19,7 +19,8 @@
 	</select> -->
 	
 	<select id="list" resultMap="colorChange-result">
-		- (select rownum rn, colorcode,colorname,c.typecode,brand,carCharacter from Scm_ColorChange c
+		select * from
+		(select rownum rn, colorcode,colorname,c.typecode,brand,carCharacter from Scm_ColorChange c
     	left join scm_typeDictionary d on c.typecode=d.typecode
     	where  <![CDATA[ rownum<=#{pageMax} ) where  rn>=#{pageMin} ]]>
 	</select>

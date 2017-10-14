@@ -23,7 +23,7 @@ public class ScmDealerContorller {
 	@RequestMapping("ScmDealerlist")
 	public ModelAndView list() {
 		int currPage = 1;
-		int pageSize = 5;// 页大小
+		int pageSize = 15;// 页大小
 		int count = dealerService.total();// 总记录数
 		int pageAll = (int) Math.ceil(count * 1.0 / pageSize);// 总页数
 		List<Dealer> dealers = dealerService.listByPage(1, pageSize);// 首页记录
@@ -38,7 +38,7 @@ public class ScmDealerContorller {
 	@RequestMapping("dealerByPage")
 	public ModelAndView fyTdy(@RequestParam(value = "currPage", required = false) Integer currPage) {
 
-		int pageSize = 5;// 页大小
+		int pageSize = 15;// 页大小
 		int count = dealerService.total();// 总记录数
 		int pageAll = (int) Math.ceil(count * 1.0 / pageSize);// 总页数
 		List<Dealer> dealers = null;// 当前页面数据

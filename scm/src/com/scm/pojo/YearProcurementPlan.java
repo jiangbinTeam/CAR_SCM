@@ -14,55 +14,58 @@ public class YearProcurementPlan implements Serializable{
   private Integer yearProcurementPlanCount; //采购数量
   private Integer ifDecomposition; //是否已经分解
 
-public YearProcurementPlan() {
+  public YearProcurementPlan() {
     super();
   }
 
-public Integer getYearProcurementPlanId() {
-	return yearProcurementPlanId;
-}
+  public Integer getYearProcurementPlanId() {
+    return yearProcurementPlanId;
+  }
 
-public void setYearProcurementPlanId(Integer yearProcurementPlanId) {
-	this.yearProcurementPlanId = yearProcurementPlanId;
-}
+  public void setYearProcurementPlanId(Integer yearProcurementPlanId) {
+    this.yearProcurementPlanId = yearProcurementPlanId;
+  }
 
-public String getTypeCode() {
-	return typeCode;
-}
+  public String getTypeCode() {
+    return typeCode;
+  }
 
-public void setTypeCode(String typeCode) {
-	this.typeCode = typeCode;
-}
+  public void setTypeCode(String typeCode) {
+    this.typeCode = typeCode;
+  }
 
-public Integer getYearProcurementPlanYear() {
-	return yearProcurementPlanYear;
-}
+  public Integer getYearProcurementPlanYear() {
+    return yearProcurementPlanYear;
+  }
 
-public void setYearProcurementPlanYear(Integer yearProcurementPlanYear) {
-	this.yearProcurementPlanYear = yearProcurementPlanYear;
-}
+  public void setYearProcurementPlanYear(Integer yearProcurementPlanYear) {
+    this.yearProcurementPlanYear = yearProcurementPlanYear;
+  }
 
-public Integer getYearProcurementPlanCount() {
-	return yearProcurementPlanCount;
-}
+  public Integer getYearProcurementPlanCount() {
+    return yearProcurementPlanCount;
+  }
 
-public void setYearProcurementPlanCount(Integer yearProcurementPlanCount) {
-	this.yearProcurementPlanCount = yearProcurementPlanCount;
-}
+  public void setYearProcurementPlanCount(Integer yearProcurementPlanCount) {
+    this.yearProcurementPlanCount = yearProcurementPlanCount;
+  }
 
-public Integer getIfDecomposition() {
-	return ifDecomposition;
-}
+  public Integer getIfDecomposition() {
+    return ifDecomposition;
+  }
 
-public void setIfDecomposition(Integer ifDecomposition) {
-	this.ifDecomposition = ifDecomposition;
-}
+  public void setIfDecomposition(Integer ifDecomposition) {
+    this.ifDecomposition = ifDecomposition;
+  }
 
-@Override
-public String toString() {
-	return "YearProcurementPlan [yearProcurementPlanId=" + yearProcurementPlanId + ", typeCode=" + typeCode
-			+ ", yearProcurementPlanYear=" + yearProcurementPlanYear + ", yearProcurementPlanCount="
-			+ yearProcurementPlanCount + ", ifDecomposition=" + ifDecomposition + "]";
-}
-
+  @Override
+  public String toString() {
+    return "YearProcurementPlan{" +
+            "yearProcurementPlanId=" + yearProcurementPlanId +
+            ", typeCode='" + typeCode + '\'' +
+            ", yearProcurementPlanYear=" + yearProcurementPlanYear +
+            ", yearProcurementPlanCount=" + yearProcurementPlanCount +
+            ", ifDecomposition=" + ifDecomposition +
+            '}';
+  }
 }

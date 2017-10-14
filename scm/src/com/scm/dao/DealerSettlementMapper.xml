@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scm.dao.DealerSettlementMapper">
+
+	<resultMap type="com.scm.pojo.DealerSettlement" id="dealerSettlement-result">
+		<id property="orderNumber" column="orderNumber" />
+		<result property="dealerOrderId" column="dealerOrderId" />
+		<result property="vinNumber" column="vinNumber" />
+		<result property="sellPrice" column="sellPrice" />
+		<result property="addAccessorizeCharge" column="addAccessorizeCharge" />
+		<result property="dealerId" column="dealerId" />
+
+	</resultMap>
+
+	<select id="listByDealerId" resultMap="dealerSettlement-result">
+		select
+		orderNumber,dealerOrderId,b.vinNumber,sellPrice,addAccessorizeCharge,dealerId
+		from
+		(select orderNumber,dealerOrderId,a.vinNumber,sellPrice,dealerId from
+		(select orderNumber,d.dealerOrderId,vinNumber,dealerId from scm_dealerOrder d
+		left join
+		scm_startAccounting s on s.dealerOrderId=d.dealerOrderId where vinNumber is not null)a
+		left join vin v on a.vinNumber=v.vinnumber)b
+		left join scm_addAccessorize sa on sa.vinnumber=b.vinNumber
+		<where>
+			1=1
+			<if test="dealerId!=null and dealerId!=''">
+				and DEALERID=#{dealerId}
+			</if>
+		</where>
+	</select>
+
+	<select id="pageList" resultType="com.scm.pojo.DealerSettlement">
+		select * from (
+		select rownum rn,w.* from V_yearSellPlan w
+		<where>
+				 <![CDATA[rownum<=#{pageMax}]]>
+			<if test="dealerId!=null and dealerId!=''">
+				and dealerId=#{dealerId}
+			</if>
+
+		</where>
+		) where rn >=#{pageMin}
+	</select>
+
+	<select id="totalcount" resultType="int">
+		select count(*) from V_yearSellPlan
+		<where>
+			1=1
+			<if test="dealerId!=null and dealerId!=''">
+				and dealerId=#{dealerId}
+			</if>
+		</where>
+	</select>
+
+</mapper>

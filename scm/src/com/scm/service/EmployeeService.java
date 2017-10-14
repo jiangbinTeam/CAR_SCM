@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -48,5 +49,5 @@ public class EmployeeService {
 	public List<Employee> listByPage(Integer pageMin, Integer pageMax) {
 		return employeeMapper.listByPage(pageMin, pageMax);
 	}
-
+	
 }

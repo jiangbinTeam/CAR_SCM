@@ -88,7 +88,7 @@ body {
 		<th width="13%">操作</th>
 		</tr>
 		</thead>
-		<tbody class="tbody">
+		<tbody class="tbody" align="center" >
 				<c:forEach items="${list}" var="list" varStatus="i">
 					 <tr>
 						<td>${i.index+1}</td>
@@ -101,7 +101,9 @@ body {
 						<td>
 							<a href="yearProcurementPlanafindId?yearProcurementPlanId=${list.yearProcurementPlanId}" style="color:#000099">修改</a>
 							<c:if test="${(list.ifDecomposition)==1}">
-							<a href="procurementPlanSelect?yearProcurementPlanYear=${list.yearProcurementPlanYear}&yearProcurementPlanId=${list.yearProcurementPlanId}" style="color:#000099">查看</a>
+							<a href="procurementPlanSelect?yearProcurementPlanYear=${list.yearProcurementPlanYear}&typeCode=${list.typeCode}
+																&yearProcurementPlanId=${list.yearProcurementPlanId}" 
+								style="color:#000099">查看</a>
 							</c:if>
 							<c:if test="${(list.ifDecomposition)==0}">
 							<a href="procurementPlanYear?yearProcurementPlanId=${list.yearProcurementPlanId}" style="color:#000099">分解计划</a>

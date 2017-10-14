@@ -114,7 +114,7 @@ body {
 		</tr>
 	</table>
 	</td>
-    <td background="../images/mail_rightbg.gif">&nbsp;</td>
+    <td background="${pageContext.request.contextPath}/resource/images/mail_rightbg.gif">&nbsp;</td>
   </tr>
   <tr>
     <td valign="bottom" background="${pageContext.request.contextPath}/resources/images/mail_leftbg.gif">

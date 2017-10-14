@@ -89,7 +89,7 @@ public class ColorChangeController {
 	public ModelAndView list() {
 
 		Integer currPage = 1;
-		int pageSize = 5;// 页大小
+		int pageSize = 15;// 页大小
 		int total = colorChangeService.count();// 总记录数
 		int pageAll = (int) Math.ceil(total * 1.0 / pageSize);// 总页数
 
@@ -106,7 +106,7 @@ public class ColorChangeController {
 	@RequestMapping("fyCol")
 	public ModelAndView fyCol(@RequestParam(value = "currPage", required = false) Integer currPage) {
 		
-		int pageSize = 5;// 页大小
+		int pageSize = 15;// 页大小
 		int count = colorChangeService.count();// 总记录数
 		int pageAll = (int) Math.ceil(count * 1.0 / pageSize);// 计算总页数
 		List<ColorChange> colorChanges = null;// 当前页面数据

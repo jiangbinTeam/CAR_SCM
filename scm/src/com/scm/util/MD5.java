@@ -378,7 +378,7 @@ public class MD5 {
 //    } else
 //      System.out.println("MD5(" + args[0] + ")=" + m.getMD5ofStr(args[0]));
 	  
-	System.out.println(MD5.getInstance().getMD5ofStr("123456"));
+	System.out.println(MD5.getInstance().getMD5ofStr("963258"));
 	  
   }
 

@@ -65,7 +65,12 @@ public class YearProcurementService {
 	}
 	
 	//查询记录条数
-	public int countPage(){
-		return yearProcurementMapper.countPage();
+	public int countPage(Integer yearProcurementPlanYear){
+		return yearProcurementMapper.countPage(yearProcurementPlanYear);
+	}
+	
+	//根据年份查车型
+	public List<YearProcurement> findType(Integer yearProcurementPlanYear){
+		return yearProcurementMapper.findType(yearProcurementPlanYear);
 	}
 }

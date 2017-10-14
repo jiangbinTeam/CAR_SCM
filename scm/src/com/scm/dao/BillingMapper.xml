@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.scm.dao.BillingMapper">
+                                 
+    <resultMap id="billing" type="com.scm.pojo.Billing">
+         <id property="vinNumber" column="vinNumber"/>
+      <result property="invoiceNumber" column="invoiceNumber"/>
+      <result property="invoiceDate" column="invoiceDate"/>
+      <result property="carCharacter" column="carCharacter"/>
+      <result property="colorName" column="colorName"/>
+    </resultMap>
+    
+      <select id="pagelist" resultType="com.scm.pojo.Billing">
+		select * from (
+			select rownum rn,w.* from V_Billingg  w 
+			<where>  
+				 <![CDATA[rownum<=#{pageMax}]]>
+				<if test="vinNumber !=null and vinNumber!=''">
+					and vinNumber=#{vinNumber}
+				</if>
+			</where>
+		) where rn >=#{pageMin}  
+      </select>
+      
+      <select id="totalcount" resultType="int">
+        select count(*) from V_Billingg
+        		<where>  
+			     1=1
+				<if test="vinNumber!=null and vinNumber!=''">
+					and vinNumber=#{vinNumber}
+				</if>
+		
+		</where>
+      </select>
+    </mapper>

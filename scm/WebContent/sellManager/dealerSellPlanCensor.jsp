@@ -65,7 +65,7 @@
   </table>
 	<form action="listPage" method="get">
 	<input type="hidden" name="currPage" value="1">
-	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">
+	<table width="98%" border="0" align="center"  style="text-align: center;" cellpadding="0" cellspacing="0" class="line_table">
 		<tr>
 		<td width="7%" align="center" height="30"><span class="left_bt2">请选择年份</span></td>
 		<td width="9%">
@@ -191,29 +191,37 @@
 	<table width="98%" border="0" style="text-align: center;" align="center" cellpadding="0" cellspacing="0" class="line_table">
 		<thead class="thead">
 	    	<tr>
-				<th width="8%">序号</th>
-				<th width="27%">经销商</th>
+				<th width="7%">序号</th>
+				<th width="21%">经销商</th>
 				<th width="12%">品牌</th>
-				<th width="17%">车辆编码</th>
-				<th width="13%">年份</th>	
-				<th width="10%">月份</th>	
-				<th width="13%">计划数量</th>	
-				
+				<th width="15%">车辆编码</th>
+				<th width="12%">年份</th>	
+				<th width="8%">月份</th>	
+				<th width="12%">计划数量</th>	
+				<th width="13%">销售明细</th>	
 			</tr>
 		</thead>
 		<tbody class="tbody">
-			<c:forEach items="${dealerSellPlanCs}" var="d" varStatus="i">
-				 <tr>
-					<td>${i.index+1}</td>
-					<td>${d.storefrontName }</td>
-					<td>${d.brand }</td>
-					<td>${d.typeCode }</td>
-					<td>${d.year }</td>
-					<td>${d.yearPlanMouth }</td>	
-					<td>${d.yearPlanDealerCount }</td>	
-					<!-- <td><a href="dealerSellPlanCensorList.html" style="color:#000099">80</a></td>	 -->
+			<c:if test="${empty dealerSellPlanCs}">
+				<tr>
+					<td colspan="7" style="font-size: 18px;">没有符合条件的数据</td>
 				</tr>
-			</c:forEach>
+			</c:if>
+			<c:if test="${!empty dealerSellPlanCs}">
+				<c:forEach items="${dealerSellPlanCs}" var="d" varStatus="i">
+					 <tr>
+						<td>${i.index+1}</td>
+						<td>${d.storefrontName }</td>
+						<td>${d.brand }</td>
+						<td>${d.typeCode }</td>
+						<td>${d.year }</td>
+						<td>${d.yearPlanMouth }</td>	
+						<td>${d.yearPlanDealerCount }</td>	
+						<td><a href="dealerSellPlanCensorList?dealerId=${d.dealerId }&typeCode=${d.typeCode}&year=${d.year}&month=${d.yearPlanMouth}" 
+							style="color:#000099">销售明细</a></td>
+					</tr>
+				</c:forEach>
+			</c:if>
 		</tbody>						
     </table>
 	<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" class="line_table">

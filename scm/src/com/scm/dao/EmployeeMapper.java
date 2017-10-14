@@ -37,6 +37,5 @@ public interface EmployeeMapper {
 	
 	@Select("select * from (select rownum rn,e.* from Scm_Employee e ) se where se.rn>=#{pageMin} and se.rn<=#{pageMax}")
 	List<Employee> listByPage(@Param("pageMin") Integer pageMin, @Param("pageMax") Integer pageMax);
-	
-	
+
 }

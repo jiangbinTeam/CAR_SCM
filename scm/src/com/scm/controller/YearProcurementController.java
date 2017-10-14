@@ -21,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.scm.pojo.YearProcurement;
 import com.scm.pojo.YearProcurementPlan;
-import com.scm.service.TypeDicService;
 import com.scm.service.YearProcurementService;
 
 import net.sf.json.JSONArray;
@@ -42,7 +41,7 @@ public class YearProcurementController {
 
 	// 列出全年采购计划
 	// 使用@RequestMapping 来映射URL 到控制器类，或者是到Controller 控制器的处理方法上
-	@RequestMapping("yearProcurementPlan")
+/*	@RequestMapping("yearProcurementPlan")
 	public ModelAndView findAll() {
 		List<YearProcurement> ypp = yearProcurementService.findAll();
 		ModelAndView mv = new ModelAndView();
@@ -51,7 +50,7 @@ public class YearProcurementController {
 		mv.addObject("ypp", ypp); // 模型数据
 		
 		return mv;
-	}
+	}*/
 
 	// 判断本年是否还有未做采购计划的车型
 	@RequestMapping("yearProcurementPlanafind")
@@ -79,7 +78,7 @@ public class YearProcurementController {
 		ypp.setTypeCode(typeCode);
 		ypp.setYearProcurementPlanYear(yearProcurementPlanYear);
 		ypp.setYearProcurementPlanCount(yearProcurementPlanCount);
-		/*ypp.setIfDecomposition(yearProcurementPlanCount);*/
+		ypp.setIfDecomposition(0);
 
 		yearProcurementService.add(ypp);
 
@@ -87,7 +86,7 @@ public class YearProcurementController {
 	}
 
 	// 通过年份查全年采购计划
-	@RequestMapping("yearProcurementPlanafindYear")
+/*	@RequestMapping("yearProcurementPlanafindYear")
 	public ModelAndView findYear() {
 
 		List<YearProcurement> ypp = yearProcurementService.findYear(yppy);
@@ -96,7 +95,7 @@ public class YearProcurementController {
 		mv.addObject("ypp", ypp); // 模型数据
 
 		return mv;
-	}
+	}*/
 
 	// 按id查全年采购计划
 	@RequestMapping("yearProcurementPlanafindId")
@@ -115,19 +114,13 @@ public class YearProcurementController {
 	// 修改全年采购计划
 	@RequestMapping("yearProcurementPlanUpdate")
 	public String Update(@RequestParam(value = "yearProcurementPlanId", required = true) Integer yearProcurementPlanId,
-			@RequestParam(value = "typeCode", required = true) String typeCode,
-			@RequestParam(value = "yearProcurementPlanYear", required = true) Integer yearProcurementPlanYear,
-			@RequestParam(value = "yearProcurementPlanCount", required = true) Integer yearProcurementPlanCount
-//			@RequestParam(value = "ifDecomposition", required = true) Integer ifDecomposition
-			) {
+			@RequestParam(value = "yearProcurementPlanCount", required = true) Integer yearProcurementPlanCount) {
 
 		YearProcurementPlan ypp = new YearProcurementPlan();
 
 		ypp.setYearProcurementPlanId(yearProcurementPlanId);
-		ypp.setTypeCode(typeCode);
-		ypp.setYearProcurementPlanYear(yearProcurementPlanYear);
 		ypp.setYearProcurementPlanCount(yearProcurementPlanCount);
-//		ypp.setIfDecomposition(ifDecomposition);
+
 
 		yearProcurementService.update(ypp);
 
@@ -140,9 +133,13 @@ public class YearProcurementController {
 			@RequestParam(value = "yearProcurementPlanYear", required = false) Integer yearProcurementPlanYear) {
 		List<YearProcurement> list = new ArrayList<YearProcurement>();
 
+		if (yearProcurementPlanYear == null) { // 判断查询年份值是否为空 如果为空用当前年份查询
+			yearProcurementPlanYear = yppy;
+		}
+		
 		int pageSize = 15;
-		int count = yearProcurementService.countPage();
-		int pageAll = (int) Math.ceil(count * 1.0 / pageSize);
+		int count = yearProcurementService.countPage(yearProcurementPlanYear); // 计算总记录数
+		int pageAll = (int) Math.ceil(count * 1.0 / pageSize); // 计算总页数
 		if (currPage != null) {
 			if (currPage < 1) {
 				currPage = 1;
@@ -154,9 +151,7 @@ public class YearProcurementController {
 		if (currPage == null) {
 			currPage = 1;
 		}
-		if (yearProcurementPlanYear == null) { // 判断查询年份值是否为空 如果为空用当前年份查询
-			yearProcurementPlanYear = yppy;
-		}
+		
 		int pageMin = (currPage - 1) * pageSize + 1;
 		int pageMax = currPage * pageSize;
 
@@ -175,10 +170,14 @@ public class YearProcurementController {
 	@RequestMapping("yearProcurementPlanSelect")
 	public ModelAndView findBySelect(@RequestParam(value = "currPage", required = false) Integer currPage,
 			@RequestParam(value = "yearProcurementPlanYear", required = false) Integer yearProcurementPlanYear) {
+		
 		List<YearProcurement> list = new ArrayList<YearProcurement>();
-
+		if (yearProcurementPlanYear == null) { // 判断查询年份值是否为空 如果为空用当前年份查询
+			yearProcurementPlanYear = yppy;
+		}
+		
 		int pageSize = 15;
-		int count = yearProcurementService.countPage();
+		int count = yearProcurementService.countPage(yearProcurementPlanYear);
 		int pageAll = (int) Math.ceil(count * 1.0 / pageSize);
 		if (currPage != null) {
 			if (currPage < 1) {
@@ -191,32 +190,44 @@ public class YearProcurementController {
 		if (currPage == null) {
 			currPage = 1;
 		}
-		if (yearProcurementPlanYear == null) { // 判断查询年份值是否为空 如果为空用当前年份查询
-			yearProcurementPlanYear = yppy;
-		}
+		
 		int pageMin = (currPage - 1) * pageSize + 1;
 		int pageMax = currPage * pageSize;
 
 		list = yearProcurementService.findByPage(pageMin, pageMax, yearProcurementPlanYear);
+		
+		List<YearProcurement> years = yearProcurementService.findAll();
 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("procurementManager/developmentProcurementPlanSelect");
 		mv.addObject("list", list);
+		mv.addObject("yearProcurementPlanYear", yearProcurementPlanYear);
 		mv.addObject("currPage", currPage);
 		mv.addObject("totalPage", pageAll);
-
+		mv.addObject("years", years);
+		
 		return mv;
 	}
 	
 	//Json查年份
-	@RequestMapping(value = "selectType", produces = "text/html;charset=UTF-8")
-	  @ResponseBody
-	  public String findlist(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value = "selectYear", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String findlist(HttpServletRequest request, HttpServletResponse response) {
 		List<YearProcurement> ypp = yearProcurementService.findAll();
 		
 		// 转JSON 转换成JSONArray对象的形式的字符串 
 		JSONArray jsonArray = JSONArray.fromObject(ypp);
 	    return jsonArray.toString();
 	  }
+	
+	//Json根据年份查车型
+	@RequestMapping(value = "selectType", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String findType(@RequestParam(value = "yearProcurementPlanYear", required = false) Integer yearProcurementPlanYear,
+											HttpServletRequest request, HttpServletResponse response){
+		List<YearProcurement> ypp = yearProcurementService.findType(yearProcurementPlanYear);
+		JSONArray jsonArray = JSONArray.fromObject(ypp);
+	    return jsonArray.toString();
+	}
 
 }

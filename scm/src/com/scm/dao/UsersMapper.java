@@ -1,5 +1,8 @@
 package com.scm.dao;
 
+
+import org.apache.catalina.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 
 import org.apache.ibatis.annotations.Select;
@@ -10,13 +13,22 @@ import com.scm.pojo.Users;
 
 @Repository("usersMapper")
 public interface UsersMapper {
-	@Select("select * from users where username=#{username} and password=#{password}")
-	Users login(@Param("username") String username, @Param("password") String password);
+	// 使用户用户名和密码来查询用户
+	@Select("select * from users where username=#{userName} and password=#{password}")
+	Users login(@Param("userName") String userName, @Param("password") String password);
 
-	@Update("update users set password=#{newpassword,jdbcType=VARCHAR} where password=#{password} and username=#{username} ")
-	int updateUser(@Param("newpassword") String newpassword, @Param("password") String password,
-			@Param("username") String username);
+	// 修改密码
+	@Update("update users set password=#{newpassword,jdbcType=VARCHAR} where username=#{userName} ")
+	int updateUser(@Param("newpassword") String newpassword, @Param("userName") String userName);
 
-	@Select("select username from users where username=#{username} ")
-	String findByName(String username);
+	// 使用用户名来查询用户信息
+	@Select("select * from users where userName=#{userName} ")
+	Users findByName(String userName);
+	
+	@Insert("insert into users values(#{userName},#{password},#{enabled})")
+	int add(Users user);
+	
+	@Update("update users set enabled=#{enabled} where username=#{userName} ")
+	int updateEnabled(Users user);
+
 }

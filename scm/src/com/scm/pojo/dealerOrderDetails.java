@@ -2,7 +2,7 @@ package com.scm.pojo;
 
 import java.io.Serializable;
 
-public class dealerOrderDetails implements Serializable {
+public class DealerOrderDetails implements Serializable {
   private static final long serialVersionUID = 4488940162126475701L;
 
   /*27.经销商订单明细（scm_dealerOrderDetails）
@@ -19,7 +19,7 @@ public class dealerOrderDetails implements Serializable {
   private String addAccessorizeNote;
   private Integer ifCreateStartAccounting;
 
-  public dealerOrderDetails() {
+  public DealerOrderDetails() {
     super();
   }
 

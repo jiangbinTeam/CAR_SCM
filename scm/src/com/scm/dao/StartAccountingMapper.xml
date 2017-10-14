@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scm.dao.StartAccountingMapper">
+	<resultMap type="com.scm.pojo.StartAccounting2" id="startAccounting2-result">
+		<id property="startAccountingId" column="startAccountingId" />
+		<result property="typeCode" column="typeCode" />
+		<result property="brand" column="brand" />
+		<result property="carCharacter" column="carCharacter" />
+		<result property="colorCode" column="colorCode" />
+		<result property="colorName" column="colorName" />
+		<result property="addAccessorizeNote" column="addAccessorizeNote" />
+		<result property="vinNumber" column="vinNumber" />
+		<result property="dealerOrderId" column="dealerOrderId" />
+		<result property="invoiceId" column="invoiceId" />
+		<result property="startAccountingStates" column="startAccountingStates" />
+		<result property="sellPrice" column="sellPrice" />
+	</resultMap>
+	<sql id="pj1">
+		<if test="dealerOrderId != null and dealerOrderId != ''">
+			and dealerOrderId = #{dealerOrderId}
+		</if>
+		<if test="vinNumber != null and vinNumber != ''">
+			and vinNumber = #{vinNumber}
+		</if>
+		<if test="startAccountingStates != null ">
+			and startAccountingStates = #{startAccountingStates}
+		</if>
+	</sql>
+
+	<select id="findSatcc" resultMap="startAccounting2-result">
+		select * from ( select rownum rnn,col.colorname,wht.* from
+		scm_colorChange col right join
+		(select tyd.brand,tyd.carcharacter,rnb.* from scm_typeDictionary tyd 
+		right join
+		(select sta.* ,v.typecode,v.colorcode,v.addaccessorizenote,v.sellprice from
+		scm_startAccounting sta left join vin v on sta.vinNumber = v.vinNumber) rnb
+	    on tyd.typecode=rnb.typecode) wht
+		on col.colorcode = wht.colorcode where 1=1
+		<include refid="pj1"></include> <![CDATA[and  rownum<=#{pageMax} ]]>)
+		where
+		rnn>=#{pageMin}
+	</select>
+
+	<select id="countSatcc" resultType="int">
+		select count(startAccountingId) from scm_startAccounting where 1=1
+		<include refid="pj1"></include>
+	</select>
+</mapper>
